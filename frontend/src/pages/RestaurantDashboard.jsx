@@ -252,7 +252,7 @@ const RestaurantDashboard = () => {
  {/* KPI Cards */}
  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
  {[
- { title: t('dash.total_revenue'), value: `$${totalRevenue.toFixed(2)}`, icon: <DollarSign className="text-emerald-500" />, trend: '+12.5%', color: 'from-emerald-500/20 to-emerald-500/5', border: 'border-emerald-100' },
+ { title: t('dash.total_revenue'), value: `₹${totalRevenue.toFixed(2)}`, icon: <DollarSign className="text-emerald-500" />, trend: '+12.5%', color: 'from-emerald-500/20 to-emerald-500/5', border: 'border-emerald-100' },
  { title: t('dash.active_orders', { defaultValue: 'Active Orders' }), value: activeOrders.toString(), icon: <ShoppingBag className="text-blue-500" />, trend: '+5.2%', color: 'from-blue-500/20 to-blue-500/5', border: 'border-blue-100' },
  { title: t('dash.pending_reservations'), value: pendingReservations.toString(), icon: <Users className="text-orange-500" />, trend: '-2.1%', color: 'from-orange-500/20 to-orange-500/5', border: 'border-orange-100' },
  { title: t('dash.items_out_of_stock'), value: outOfStockItems.toString(), icon: <AlertCircle className="text-red-500" />, trend: '+1', color: 'from-red-500/20 to-red-500/5', border: 'border-red-100', isBad: true }
@@ -481,7 +481,7 @@ const RestaurantDashboard = () => {
  <input type="text" required placeholder="e.g. Truffle Fries" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all" value={newItem.name} onChange={e => setNewItem({...newItem, name: e.target.value})} />
  </div>
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Price ($)</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Price (₹)</label>
  <input type="number" step="0.01" required placeholder="0.00" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all" value={newItem.price} onChange={e => setNewItem({...newItem, price: e.target.value})} />
  </div>
  <div>

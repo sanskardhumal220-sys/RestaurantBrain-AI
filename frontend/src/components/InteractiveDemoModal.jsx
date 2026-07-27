@@ -75,7 +75,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { label: t('demo.total_revenue'), value: '$24,592.00', change: '+12.5%', icon: <DollarSign className="w-6 h-6 text-green-500" />, color: 'bg-green-100 dark:bg-green-500/10' },
+                { label: t('demo.total_revenue'), value: '₹24,592.00', change: '+12.5%', icon: <DollarSign className="w-6 h-6 text-green-500" />, color: 'bg-green-100 dark:bg-green-500/10' },
                 { label: t('demo.active_orders'), value: '42', change: '+5.2%', icon: <Activity className="w-6 h-6 text-blue-500" />, color: 'bg-blue-100 dark:bg-blue-500/10' },
                 { label: t('demo.total_customers'), value: '1,284', change: '+18.1%', icon: <Users className="w-6 h-6 text-purple-500" />, color: 'bg-purple-100 dark:bg-purple-500/10' },
                 { label: t('demo.growth'), value: '+24%', change: '+2.4%', icon: <TrendingUp className="w-6 h-6 text-orange-500" />, color: 'bg-orange-100 dark:bg-orange-500/10' },
@@ -125,11 +125,11 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">{t('demo.recent_orders')}</h3>
                 <div className="space-y-4">
                   {[
-                    { id: '#ORD-001', item: 'Margherita Pizza', time: '2 mins ago', price: '$14.00' },
-                    { id: '#ORD-002', item: 'Truffle Pasta', time: '15 mins ago', price: '$22.00' },
-                    { id: '#ORD-003', item: 'Caesar Salad', time: '32 mins ago', price: '$12.00' },
-                    { id: '#ORD-004', item: 'Grilled Salmon', time: '1 hr ago', price: '$28.00' },
-                    { id: '#ORD-005', item: 'Beef Burger', time: '2 hrs ago', price: '$16.00' },
+                    { id: '#ORD-001', item: 'Margherita Pizza', time: '2 mins ago', price: '₹14.00' },
+                    { id: '#ORD-002', item: 'Truffle Pasta', time: '15 mins ago', price: '₹22.00' },
+                    { id: '#ORD-003', item: 'Caesar Salad', time: '32 mins ago', price: '₹12.00' },
+                    { id: '#ORD-004', item: 'Grilled Salmon', time: '1 hr ago', price: '₹28.00' },
+                    { id: '#ORD-005', item: 'Beef Burger', time: '2 hrs ago', price: '₹16.00' },
                   ].map((order, i) => (
                     <div key={i} className="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-100 dark:hover:border-slate-700">
                       <div>
