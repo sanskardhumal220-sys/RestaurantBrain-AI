@@ -152,294 +152,301 @@ const Register = () => {
           
           <div className="relative z-10">
             
-            {success ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
-              >
-                <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6">
-                  <Mail className="w-10 h-10 text-green-600 dark:text-green-400" />
-                </div>
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Check your email</h2>
-                <p className="text-slate-600 dark:text-slate-300 mb-8">
-                  A verification email has been sent to <br/><span className="font-semibold text-slate-800 dark:text-slate-100">{formData.email}</span>. <br/>Please verify your account to continue.
-                </p>
-                <Link to="/login" className="inline-flex justify-center items-center py-3 px-6 rounded-xl shadow-lg shadow-primary/20 text-sm font-medium text-white bg-gradient-to-r from-primary to-emerald-400 hover:from-primary-dark hover:to-primary transition-all">
-                  Back to Login
-                </Link>
-              </motion.div>
-            ) : (
-              <>
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">{t('auth.create_account')}</h2>
-                  <p className="text-slate-500 dark:text-slate-400 mt-2">Join RestaurantBrain in just a few steps</p>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="mb-8 relative">
-                  <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-slate-200 dark:bg-slate-700">
-                    <motion.div 
-                      initial={{ width: '33%' }}
-                      animate={{ width: `${(step / 3) * 100}%` }}
-                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"
-                    ></motion.div>
+            <AnimatePresence mode="wait">
+              {success ? (
+                <motion.div 
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  className="text-center py-12"
+                >
+                  <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6">
+                    <Mail className="w-10 h-10 text-green-600 dark:text-green-400" />
                   </div>
-                  <div className="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-400 px-1">
-                    <span className={step >= 1 ? 'text-primary' : ''}>Details</span>
-                    <span className={step >= 2 ? 'text-primary' : ''}>Password</span>
-                    <span className={step >= 3 ? 'text-primary' : ''}>Role</span>
+                  <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Check your email</h2>
+                  <p className="text-slate-600 dark:text-slate-300 mb-8">
+                    A verification email has been sent to <br/><span className="font-semibold text-slate-800 dark:text-slate-100">{formData.email}</span>. <br/>Please verify your account to continue.
+                  </p>
+                  <Link to="/login" className="inline-flex justify-center items-center py-3 px-6 rounded-xl shadow-lg shadow-primary/20 text-sm font-medium text-white bg-gradient-to-r from-primary to-emerald-400 hover:from-primary-dark hover:to-primary transition-all">
+                    Back to Login
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">{t('auth.create_account')}</h2>
+                    <p className="text-slate-500 dark:text-slate-400 mt-2">Join RestaurantBrain in just a few steps</p>
                   </div>
-                </div>
 
-                <div className="min-h-[300px]">
-                  <AnimatePresence mode="wait">
-                    
-                    {step === 1 && (
-                      <motion.div
-                        key="step1"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-5"
-                      >
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.full_name')} *</label>
-                          <div className="relative group">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
-                              <User className="h-5 w-5" />
-                            </div>
-                            <input
-                              type="text"
-                              name="fullName"
-                              className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
-                              placeholder="John Doe"
-                              value={formData.fullName}
-                              onChange={handleChange}
-                            />
-                          </div>
-                        </div>
+                  {/* Progress Bar */}
+                  <div className="mb-8 relative">
+                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-slate-200 dark:bg-slate-700">
+                      <motion.div 
+                        initial={{ width: '33%' }}
+                        animate={{ width: `${(step / 3) * 100}%` }}
+                        className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"
+                      ></motion.div>
+                    </div>
+                    <div className="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-400 px-1">
+                      <span className={step >= 1 ? 'text-primary' : ''}>Details</span>
+                      <span className={step >= 2 ? 'text-primary' : ''}>Password</span>
+                      <span className={step >= 3 ? 'text-primary' : ''}>Role</span>
+                    </div>
+                  </div>
 
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.email')} *</label>
-                          <div className="relative group">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
-                              <Mail className="h-5 w-5" />
-                            </div>
-                            <input
-                              type="email"
-                              name="email"
-                              className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
-                              placeholder="you@example.com"
-                              value={formData.email}
-                              onChange={handleChange}
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Phone Number</label>
-                          <div className="relative group">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
-                              <Phone className="h-5 w-5" />
-                            </div>
-                            <input
-                              type="tel"
-                              name="phone"
-                              className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
-                              placeholder="+1 (555) 000-0000"
-                              value={formData.phone}
-                              onChange={handleChange}
-                            />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {step === 2 && (
-                      <motion.div
-                        key="step2"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-5"
-                      >
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.password')} *</label>
-                          <div className="relative group">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
-                              <Lock className="h-5 w-5" />
-                            </div>
-                            <input
-                              type={showPassword ? "text" : "password"}
-                              name="password"
-                              className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
-                              placeholder="••••••••"
-                              value={formData.password}
-                              onChange={handleChange}
-                            />
-                            <button 
-                              type="button" 
-                              onClick={() => setShowPassword(!showPassword)}
-                              className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
-                            >
-                              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                            </button>
-                          </div>
-                          
-                          {/* Password Strength Meter */}
-                          <div className="mt-3">
-                            <div className="flex justify-between text-xs mb-1">
-                              <span className="text-slate-500 dark:text-slate-400">Password strength</span>
-                              <span className="font-medium text-slate-700 dark:text-slate-300">{strength}%</span>
-                            </div>
-                            <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
-                              <motion.div 
-                                className={`h-full ${getStrengthColor()}`}
-                                initial={{ width: 0 }}
-                                animate={{ width: `${strength}%` }}
-                                transition={{ duration: 0.3 }}
+                  <div className="min-h-[300px]">
+                    <AnimatePresence mode="wait">
+                      
+                      {step === 1 && (
+                        <motion.div
+                          key="step1"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 20 }}
+                          transition={{ duration: 0.3 }}
+                          className="space-y-5"
+                        >
+                          <div>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.full_name')} *</label>
+                            <div className="relative group">
+                              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
+                                <User className="h-5 w-5" />
+                              </div>
+                              <input
+                                type="text"
+                                name="fullName"
+                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                placeholder="John Doe"
+                                value={formData.fullName}
+                                onChange={handleChange}
                               />
                             </div>
-                            <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-400">
-                              <div className={`flex items-center gap-1 ${formData.password.length >= 8 ? 'text-green-600 dark:text-green-400' : ''}`}>
-                                <CheckCircle className="w-3 h-3" /> Min 8 chars
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.email')} *</label>
+                            <div className="relative group">
+                              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
+                                <Mail className="h-5 w-5" />
                               </div>
-                              <div className={`flex items-center gap-1 ${/[A-Z]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
-                                <CheckCircle className="w-3 h-3" /> Uppercase
+                              <input
+                                type="email"
+                                name="email"
+                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                placeholder="you@example.com"
+                                value={formData.email}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Phone Number</label>
+                            <div className="relative group">
+                              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
+                                <Phone className="h-5 w-5" />
                               </div>
-                              <div className={`flex items-center gap-1 ${/[a-z]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
-                                <CheckCircle className="w-3 h-3" /> Lowercase
+                              <input
+                                type="tel"
+                                name="phone"
+                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                placeholder="+1 (555) 000-0000"
+                                value={formData.phone}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {step === 2 && (
+                        <motion.div
+                          key="step2"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 20 }}
+                          transition={{ duration: 0.3 }}
+                          className="space-y-5"
+                        >
+                          <div>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.password')} *</label>
+                            <div className="relative group">
+                              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
+                                <Lock className="h-5 w-5" />
                               </div>
-                              <div className={`flex items-center gap-1 ${/[0-9]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
-                                <CheckCircle className="w-3 h-3" /> Number
+                              <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                placeholder="••••••••"
+                                value={formData.password}
+                                onChange={handleChange}
+                              />
+                              <button 
+                                type="button" 
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                              >
+                                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                              </button>
+                            </div>
+                            
+                            {/* Password Strength Meter */}
+                            <div className="mt-3">
+                              <div className="flex justify-between text-xs mb-1">
+                                <span className="text-slate-500 dark:text-slate-400">Password strength</span>
+                                <span className="font-medium text-slate-700 dark:text-slate-300">{strength}%</span>
                               </div>
-                              <div className={`flex items-center gap-1 col-span-2 ${/[^A-Za-z0-9]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
-                                <CheckCircle className="w-3 h-3" /> Special Character (@$!%*?&)
+                              <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
+                                <motion.div 
+                                  className={`h-full ${getStrengthColor()}`}
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${strength}%` }}
+                                  transition={{ duration: 0.3 }}
+                                />
+                              </div>
+                              <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-400">
+                                <div className={`flex items-center gap-1 ${formData.password.length >= 8 ? 'text-green-600 dark:text-green-400' : ''}`}>
+                                  <CheckCircle className="w-3 h-3" /> Min 8 chars
+                                </div>
+                                <div className={`flex items-center gap-1 ${/[A-Z]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
+                                  <CheckCircle className="w-3 h-3" /> Uppercase
+                                </div>
+                                <div className={`flex items-center gap-1 ${/[a-z]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
+                                  <CheckCircle className="w-3 h-3" /> Lowercase
+                                </div>
+                                <div className={`flex items-center gap-1 ${/[0-9]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
+                                  <CheckCircle className="w-3 h-3" /> Number
+                                </div>
+                                <div className={`flex items-center gap-1 col-span-2 ${/[^A-Za-z0-9]/.test(formData.password) ? 'text-green-600 dark:text-green-400' : ''}`}>
+                                  <CheckCircle className="w-3 h-3" /> Special Character (@$!%*?&)
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.confirm_password')} *</label>
-                          <div className="relative group">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
-                              <Lock className="h-5 w-5" />
+                          <div>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.confirm_password')} *</label>
+                            <div className="relative group">
+                              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
+                                <Lock className="h-5 w-5" />
+                              </div>
+                              <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                name="confirmPassword"
+                                className={`block w-full pl-10 pr-10 py-3 border rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white bg-white/50 dark:bg-slate-800/50 ${
+                                  formData.confirmPassword && formData.password !== formData.confirmPassword 
+                                  ? 'border-red-500 focus:border-red-500' 
+                                  : 'border-slate-200 dark:border-slate-700 focus:border-primary'
+                                }`}
+                                placeholder="••••••••"
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                              />
+                              <button 
+                                type="button" 
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                              >
+                                {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                              </button>
                             </div>
-                            <input
-                              type={showConfirmPassword ? "text" : "password"}
-                              name="confirmPassword"
-                              className={`block w-full pl-10 pr-10 py-3 border rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white bg-white/50 dark:bg-slate-800/50 ${
-                                formData.confirmPassword && formData.password !== formData.confirmPassword 
-                                ? 'border-red-500 focus:border-red-500' 
-                                : 'border-slate-200 dark:border-slate-700 focus:border-primary'
-                              }`}
-                              placeholder="••••••••"
-                              value={formData.confirmPassword}
-                              onChange={handleChange}
-                            />
-                            <button 
-                              type="button" 
-                              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                              className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
-                            >
-                              {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                            </button>
                           </div>
-                        </div>
-                      </motion.div>
-                    )}
+                        </motion.div>
+                      )}
 
-                    {step === 3 && (
-                      <motion.div
-                        key="step3"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-4"
+                      {step === 3 && (
+                        <motion.div
+                          key="step3"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 20 }}
+                          transition={{ duration: 0.3 }}
+                          className="space-y-4"
+                        >
+                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Select Your Role</label>
+                          <div className="space-y-3">
+                            {roles.map((role) => (
+                              <div 
+                                key={role.id}
+                                onClick={() => setFormData({...formData, role: role.id})}
+                                className={`cursor-pointer rounded-xl border-2 p-4 flex items-start gap-4 transition-all ${
+                                  formData.role === role.id 
+                                  ? 'border-primary bg-primary/5' 
+                                  : 'border-slate-200 dark:border-slate-700 hover:border-primary/50'
+                                }`}
+                              >
+                                <div className={`p-2 rounded-full ${formData.role === role.id ? 'bg-primary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
+                                  {role.icon}
+                                </div>
+                                <div>
+                                  <h4 className={`font-semibold ${formData.role === role.id ? 'text-primary' : 'text-slate-800 dark:text-slate-200'}`}>{role.title}</h4>
+                                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{role.desc}</p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="mt-8 flex justify-between items-center pt-6 border-t border-slate-200 dark:border-slate-700">
+                    {step > 1 ? (
+                      <button
+                        type="button"
+                        onClick={prevStep}
+                        className="flex items-center text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
                       >
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Select Your Role</label>
-                        <div className="space-y-3">
-                          {roles.map((role) => (
-                            <div 
-                              key={role.id}
-                              onClick={() => setFormData({...formData, role: role.id})}
-                              className={`cursor-pointer rounded-xl border-2 p-4 flex items-start gap-4 transition-all ${
-                                formData.role === role.id 
-                                ? 'border-primary bg-primary/5' 
-                                : 'border-slate-200 dark:border-slate-700 hover:border-primary/50'
-                              }`}
-                            >
-                              <div className={`p-2 rounded-full ${formData.role === role.id ? 'bg-primary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
-                                {role.icon}
-                              </div>
-                              <div>
-                                <h4 className={`font-semibold ${formData.role === role.id ? 'text-primary' : 'text-slate-800 dark:text-slate-200'}`}>{role.title}</h4>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{role.desc}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
+                        <ArrowLeft className="w-4 h-4 mr-1" />
+                        Back
+                      </button>
+                    ) : (
+                      <div></div> // Empty div to keep Next button aligned right
                     )}
 
-                  </AnimatePresence>
-                </div>
-
-                <div className="mt-8 flex justify-between items-center pt-6 border-t border-slate-200 dark:border-slate-700">
-                  {step > 1 ? (
-                    <button
-                      type="button"
-                      onClick={prevStep}
-                      className="flex items-center text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
-                    >
-                      <ArrowLeft className="w-4 h-4 mr-1" />
-                      Back
-                    </button>
-                  ) : (
-                    <div></div> // Empty div to keep Next button aligned right
-                  )}
-
-                  {step < 3 ? (
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="button"
-                      onClick={nextStep}
-                      className="flex items-center py-2.5 px-6 rounded-xl shadow-md shadow-primary/10 text-sm font-medium text-white bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 transition-all"
-                    >
-                      Continue
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </motion.button>
-                  ) : (
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="button"
-                      onClick={handleSubmit}
-                      disabled={loading}
-                      className="flex justify-center items-center py-2.5 px-6 rounded-xl shadow-lg shadow-primary/20 text-sm font-medium text-white bg-gradient-to-r from-primary to-emerald-400 hover:from-primary-dark hover:to-primary transition-all disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {loading ? <Loader2 className="animate-spin h-5 w-5 mr-2" /> : <CheckCircle className="h-5 w-5 mr-2" />}
-                      Create Account
-                    </motion.button>
-                  )}
-                </div>
-              </>
-            )}
-            
-            {!success && (
-              <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
-                {t('auth.already_have_account')}{' '}
-                <Link to="/login" className="font-medium text-primary hover:text-primary-dark transition-colors">
-                  {t('auth.sign_in_link')}
-                </Link>
-              </div>
-            )}
+                    {step < 3 ? (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        type="button"
+                        onClick={nextStep}
+                        className="flex items-center py-2.5 px-6 rounded-xl shadow-md shadow-primary/10 text-sm font-medium text-white bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 transition-all"
+                      >
+                        Continue
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </motion.button>
+                    ) : (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        type="button"
+                        onClick={handleSubmit}
+                        disabled={loading}
+                        className="flex justify-center items-center py-2.5 px-6 rounded-xl shadow-lg shadow-primary/20 text-sm font-medium text-white bg-gradient-to-r from-primary to-emerald-400 hover:from-primary-dark hover:to-primary transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                      >
+                        {loading ? <Loader2 className="animate-spin h-5 w-5 mr-2" /> : <CheckCircle className="h-5 w-5 mr-2" />}
+                        Create Account
+                      </motion.button>
+                    )}
+                  </div>
+                  
+                  <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+                    {t('auth.already_have_account')}{' '}
+                    <Link to="/login" className="font-medium text-primary hover:text-primary-dark transition-colors">
+                      {t('auth.sign_in_link')}
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
           </div>
         </div>
