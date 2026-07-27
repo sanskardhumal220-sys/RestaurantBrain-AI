@@ -91,29 +91,48 @@ const RestaurantDashboard = () => {
  setNewCategory({ name: '' });
  fetchData();
  showToast('Category added successfully');
- } catch (err) { alert('Failed to add category'); }
+ } catch (err) { 
+      console.error('Failed to add category:', err);
+      alert('Failed to add category: ' + (err.response?.data?.message || err.message)); 
+    }
  };
 
- const handleAddItem = async (e) => {
- e.preventDefault();
- try {
- const catId = newItem.category_id || categories[0]?.id;
- if (!catId) {
- alert('Please create a category first');
- return;
- }
- await api.post('/api/menu/items', { ...newItem, price: parseFloat(newItem.price), category_id: parseInt(catId) });
- setNewItem({ name: '', description: '', price: '', category_id: categories[0]?.id || '', is_veg: true, image_url: '', availability: 'Available' });
- fetchData();
- showToast('Menu item added successfully');
- } catch (err) { alert('Failed to add item'); }
- };
+  const handleAddItem = async (e) => {
+    e.preventDefault();
+    try {
+      const catId = newItem.category_id || categories[0]?.id;
+      if (!catId) {
+        alert('Please create a category first');
+        return;
+      }
+      const parsedPrice = parseFloat(newItem.price);
+      if (isNaN(parsedPrice)) {
+        alert('Please enter a valid price');
+        return;
+      }
+      const payload = { 
+        ...newItem, 
+        price: parsedPrice, 
+        category_id: parseInt(catId) 
+      };
+      await api.post('/api/menu/items', payload);
+      setNewItem({ name: '', description: '', price: '', category_id: categories[0]?.id || '', is_veg: true, image_url: '', availability: 'Available' });
+      fetchData();
+      showToast('Menu item added successfully');
+    } catch (err) { 
+      console.error('Failed to add item:', err.response?.data || err.message || err);
+      alert('Failed to add item: ' + (err.response?.data?.message || err.response?.data?.msg || err.message || 'Unknown error')); 
+    }
+  };
 
  const updateItemAvailability = async (id, status) => {
  try {
  await api.put(`/api/menu/items/${id}`, { availability: status });
  fetchData();
- } catch (err) { alert('Failed to update availability'); }
+ } catch (err) { 
+      console.error('Failed to update availability:', err);
+      alert('Failed to update availability: ' + (err.response?.data?.message || err.message)); 
+    }
  };
  
  const deleteItem = async (id) => {
@@ -122,7 +141,10 @@ const RestaurantDashboard = () => {
  await api.delete(`/api/menu/items/${id}`);
  fetchData();
  showToast('Item deleted');
- } catch (err) { alert('Failed to delete item'); }
+ } catch (err) { 
+      console.error('Failed to delete item:', err);
+      alert('Failed to delete item: ' + (err.response?.data?.message || err.message)); 
+    }
  };
 
  // Tables Management
