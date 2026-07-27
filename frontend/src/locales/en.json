@@ -145,6 +145,21 @@
     "no_orders_waiting": "No orders waiting to be served right now.",
     "deliver_these_items": "Deliver these items:"
   },
+  "demo": {
+    "entering": "Entering Demo Mode...",
+    "failed": "Failed to start demo",
+    "network_error": "Network error. Please try again.",
+    "title": "Live Dashboard Preview",
+    "total_revenue": "Total Revenue",
+    "active_orders": "Active Orders",
+    "total_customers": "Total Customers",
+    "growth": "Growth",
+    "vs_last_month": "vs last month",
+    "revenue_overview": "Revenue Overview",
+    "recent_orders": "Recent Orders",
+    "enter_demo": "Enter Real Live Demo",
+    "entering_btn": "Entering..."
+  },
   "footer": {
     "tagline": "\"The AI Operating System for Smart Restaurants.\"",
     "powered_by": "Powered By",

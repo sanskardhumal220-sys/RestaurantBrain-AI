@@ -22,13 +22,13 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
       const data = await response.json();
       if (response.ok) {
         login(data.token, data.user);
-        toast.success('Entering Demo Mode...');
+        toast.success(t('demo.entering'));
         navigate('/restaurant');
       } else {
-        toast.error(data.message || 'Failed to start demo');
+        toast.error(data.message || t('demo.failed'));
       }
     } catch (error) {
-      toast.error('Network error. Please try again.');
+      toast.error(t('demo.network_error'));
     } finally {
       setIsLoading(false);
     }
@@ -59,7 +59,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
             <div className="flex items-center gap-2">
               <Activity className="w-5 h-5 text-primary" />
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Live Dashboard Preview</h2>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{t('demo.title')}</h2>
             </div>
             <button
               onClick={onClose}
@@ -75,10 +75,10 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { label: 'Total Revenue', value: '$24,592.00', change: '+12.5%', icon: <DollarSign className="w-6 h-6 text-green-500" />, color: 'bg-green-100 dark:bg-green-500/10' },
-                { label: 'Active Orders', value: '42', change: '+5.2%', icon: <Activity className="w-6 h-6 text-blue-500" />, color: 'bg-blue-100 dark:bg-blue-500/10' },
-                { label: 'Total Customers', value: '1,284', change: '+18.1%', icon: <Users className="w-6 h-6 text-purple-500" />, color: 'bg-purple-100 dark:bg-purple-500/10' },
-                { label: 'Growth', value: '+24%', change: '+2.4%', icon: <TrendingUp className="w-6 h-6 text-orange-500" />, color: 'bg-orange-100 dark:bg-orange-500/10' },
+                { label: t('demo.total_revenue'), value: '$24,592.00', change: '+12.5%', icon: <DollarSign className="w-6 h-6 text-green-500" />, color: 'bg-green-100 dark:bg-green-500/10' },
+                { label: t('demo.active_orders'), value: '42', change: '+5.2%', icon: <Activity className="w-6 h-6 text-blue-500" />, color: 'bg-blue-100 dark:bg-blue-500/10' },
+                { label: t('demo.total_customers'), value: '1,284', change: '+18.1%', icon: <Users className="w-6 h-6 text-purple-500" />, color: 'bg-purple-100 dark:bg-purple-500/10' },
+                { label: t('demo.growth'), value: '+24%', change: '+2.4%', icon: <TrendingUp className="w-6 h-6 text-orange-500" />, color: 'bg-orange-100 dark:bg-orange-500/10' },
               ].map((stat, i) => (
                 <div key={i} className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center gap-4">
                   <div className={`p-4 rounded-xl ${stat.color}`}>
@@ -87,7 +87,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
                   <div>
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{stat.label}</p>
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</h3>
-                    <p className="text-xs font-medium text-green-600 dark:text-green-400 mt-1">{stat.change} vs last month</p>
+                    <p className="text-xs font-medium text-green-600 dark:text-green-400 mt-1">{stat.change} {t('demo.vs_last_month')}</p>
                   </div>
                 </div>
               ))}
@@ -98,7 +98,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
               {/* Main Chart */}
               <div className="lg:col-span-2 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">Revenue Overview</h3>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('demo.revenue_overview')}</h3>
                   <div className="flex gap-2">
                     {['1W', '1M', '3M', '1Y'].map(t => (
                       <button key={t} className="px-3 py-1 text-xs font-medium rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors">
@@ -122,7 +122,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
 
               {/* Recent Orders */}
               <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">Recent Orders</h3>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">{t('demo.recent_orders')}</h3>
                 <div className="space-y-4">
                   {[
                     { id: '#ORD-001', item: 'Margherita Pizza', time: '2 mins ago', price: '$14.00' },
@@ -153,9 +153,9 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
               className="px-6 py-2 bg-gradient-to-r from-primary to-emerald-400 hover:from-primary-dark hover:to-primary text-white rounded-xl font-medium shadow-lg shadow-primary/20 transition-all hover:scale-105 flex items-center justify-center min-w-[200px]"
             >
               {isLoading ? (
-                <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Entering...</>
+                <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> {t('demo.entering_btn')}</>
               ) : (
-                'Enter Real Live Demo'
+                t('demo.enter_demo')
               )}
             </button>
           </div>
