@@ -147,13 +147,13 @@ const Navbar = () => {
                     className="absolute right-0 mt-2 w-32 glassmorphism dark:glass-dark shadow-xl overflow-hidden z-50 border border-slate-200/50"
                   >
                     <div className="p-1">
-                      {['en', 'es', 'fr', 'de', 'hi'].map(lng => (
+                      {['en', 'hi'].map(lng => (
                         <button 
                           key={lng}
                           onClick={() => changeLanguage(lng)}
                           className={`w-full text-left px-4 py-2 text-sm rounded-lg transition-colors ${i18n.language?.startsWith(lng) ? 'bg-primary/10 text-primary font-bold' : 'text-slate-700 hover:bg-slate-50'}`}
                         >
-                          {lng === 'en' ? 'English' : lng === 'es' ? 'Español' : lng === 'fr' ? 'Français' : lng === 'de' ? 'Deutsch' : 'हिन्दी'}
+                          {lng === 'en' ? 'English' : 'हिन्दी'}
                         </button>
                       ))}
                     </div>
