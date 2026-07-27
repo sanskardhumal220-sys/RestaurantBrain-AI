@@ -14,7 +14,7 @@ def get_orders():
     user = User.query.get(user_id)
     
     if user.role == 'Customer':
-        orders = Order.query.filter_by(customer_id=user_id).order_by(Order.created_at.desc()).all()
+        orders = Order.query.filter_by(customer_id=int(user_id)).order_by(Order.created_at.desc()).all()
     elif user.role == 'Staff' or user.role == 'Restaurant Owner':
         # Active orders first
         orders = Order.query.order_by(
@@ -33,7 +33,7 @@ def get_orders():
 @orders_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_order():
-    customer_id = get_jwt_identity()
+    customer_id = int(get_jwt_identity())
     data = request.get_json()
     
     items = data.get('items', [])

@@ -16,14 +16,14 @@ def get_reservations():
     if user.role == 'Restaurant Owner' or user.role == 'Staff':
         reservations = Reservation.query.order_by(Reservation.date.desc(), Reservation.time.desc()).all()
     else:
-        reservations = Reservation.query.filter_by(customer_id=user_id).order_by(Reservation.date.desc(), Reservation.time.desc()).all()
+        reservations = Reservation.query.filter_by(customer_id=int(user_id)).order_by(Reservation.date.desc(), Reservation.time.desc()).all()
         
     return jsonify([r.to_dict() for r in reservations]), 200
 
 @reservations_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_reservation():
-    customer_id = get_jwt_identity()
+    customer_id = int(get_jwt_identity())
     data = request.get_json()
     
     new_res = Reservation(
