@@ -40,6 +40,12 @@ elif db_url.startswith('postgresql://'):
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Add SSL context for remote postgres databases (e.g. Supabase, Neon)
+if 'postgresql' in db_url and 'localhost' not in db_url and '127.0.0.1' not in db_url:
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'connect_args': {'ssl_context': True}
+    }
+
 # JWT Config
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-key-12345')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 86400 # 24 hours

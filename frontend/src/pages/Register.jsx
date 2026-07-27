@@ -96,7 +96,8 @@ const Register = () => {
       toast.success('Registration successful!');
       
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Registration failed. Please try again.');
+      console.error('Registration error:', err.response?.data || err.message || err);
+      toast.error(err.response?.data?.message || err.response?.data?.error || err.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
