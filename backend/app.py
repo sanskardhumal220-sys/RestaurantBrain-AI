@@ -26,7 +26,12 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'restaurant_brain_dev_key_2026')
 
 # Use SQLite by default for development simplicity, easily swappable to MySQL
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///' + os.path.join(basedir, 'restaurantbrain.db'))
+if os.environ.get('VERCEL'):
+    db_path = '/tmp/restaurantbrain.db'
+else:
+    db_path = os.path.join(basedir, 'restaurantbrain.db')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///' + db_path)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # JWT Config
