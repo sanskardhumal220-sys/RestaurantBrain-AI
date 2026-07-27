@@ -349,7 +349,7 @@ const CustomerDashboard = () => {
  <div className="p-6 flex-1 flex flex-col">
  <div className="flex justify-between items-start mb-3">
  <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">{item.name}</h4>
- <span className="font-extrabold text-lg text-slate-900 dark:text-white">${item.price.toFixed(2)}</span>
+ <span className="font-extrabold text-lg text-slate-900 dark:text-white">?{item.price.toFixed(2)}</span>
  </div>
  <p className="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-6 flex-1 leading-relaxed">{item.description}</p>
  
@@ -465,13 +465,13 @@ const CustomerDashboard = () => {
  <span className="bg-slate-200 text-slate-700 dark:text-slate-200 w-6 h-6 rounded flex items-center justify-center text-xs font-bold">{item.quantity}x</span>
  <span className="font-medium text-slate-800 dark:text-slate-100">{item.menu_item_name}</span>
  </div>
- <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+ <span className="font-medium">?{(item.price * item.quantity).toFixed(2)}</span>
  </div>
  ))}
  </div>
  <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-between items-end">
  <span className="text-slate-500 dark:text-slate-400 font-medium">Total Paid</span>
- <span className="text-2xl font-extrabold text-slate-900 dark:text-white">${order.total_amount.toFixed(2)}</span>
+ <span className="text-2xl font-extrabold text-slate-900 dark:text-white">?{order.total_amount.toFixed(2)}</span>
  </div>
  </div>
  </div>
@@ -656,7 +656,7 @@ const CustomerDashboard = () => {
  <button onClick={() => removeFromCart(item.id)} className="text-slate-400 hover:text-red-500 transition-colors -mr-2"><X className="w-4 h-4" /></button>
  </div>
  <div className="flex justify-between items-center mt-2">
- <span className="font-bold text-primary">${item.price.toFixed(2)}</span>
+ <span className="font-bold text-primary">?{item.price.toFixed(2)}</span>
  
  <div className="flex items-center bg-slate-100 rounded-full p-1 border border-slate-200 dark:border-slate-700 shadow-inner">
  <button onClick={() => updateQuantity(item.id, -1)} className="w-7 h-7 flex items-center justify-center hover:bg-white dark:bg-transparent transition-colors rounded-full text-slate-600 dark:text-slate-300 transition-colors shadow-sm"><Minus className="w-3 h-3" /></button>
@@ -676,7 +676,7 @@ const CustomerDashboard = () => {
  <div className="space-y-3 mb-6">
  <div className="flex justify-between text-slate-500 dark:text-slate-400 text-sm font-medium">
  <span>Subtotal</span>
- <span>${getCartTotal().toFixed(2)}</span>
+ <span>?{getCartTotal().toFixed(2)}</span>
  </div>
  <div className="flex justify-between text-slate-500 dark:text-slate-400 text-sm font-medium">
  <span>Taxes & Fees</span>
@@ -685,7 +685,7 @@ const CustomerDashboard = () => {
  <div className="h-px w-full bg-slate-100 my-2"></div>
  <div className="flex justify-between items-center text-lg font-bold">
  <span className="text-slate-800 dark:text-slate-100">Total</span>
- <span className="text-2xl text-slate-900 dark:text-white">${getCartTotal().toFixed(2)}</span>
+ <span className="text-2xl text-slate-900 dark:text-white">?{getCartTotal().toFixed(2)}</span>
  </div>
  </div>
  

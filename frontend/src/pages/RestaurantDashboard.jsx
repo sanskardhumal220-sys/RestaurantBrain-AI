@@ -378,14 +378,14 @@ const RestaurantDashboard = () => {
  <span className="w-6 h-6 bg-white dark:bg-transparent transition-colors rounded flex items-center justify-center font-bold text-slate-700 dark:text-slate-200 shadow-sm border border-slate-100 dark:border-slate-700">{item.quantity}</span>
  <span className="text-slate-800 dark:text-slate-100 font-medium">{item.menu_item_name}</span>
  </div>
- <span className="text-slate-600 dark:text-slate-300 font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
+ <span className="text-slate-600 dark:text-slate-300 font-semibold">?{(item.price * item.quantity).toFixed(2)}</span>
  </div>
  ))}
  </div>
 
  <div className="flex justify-between items-center mt-auto px-2">
  <span className="font-bold text-slate-500 dark:text-slate-400 text-sm uppercase tracking-wider">Total</span>
- <span className="font-extrabold text-2xl text-slate-900 dark:text-white">${order.total_amount.toFixed(2)}</span>
+ <span className="font-extrabold text-2xl text-slate-900 dark:text-white">?{order.total_amount.toFixed(2)}</span>
  </div>
  </div>
  ))}
@@ -571,7 +571,7 @@ const RestaurantDashboard = () => {
  </div>
  </td>
  <td className="py-4 px-6 text-slate-600 dark:text-slate-300 font-medium"><span className="bg-slate-100 px-2 py-1 rounded-md text-xs">{item.category_name}</span></td>
- <td className="py-4 px-6 font-bold text-slate-900 dark:text-white">${item.price.toFixed(2)}</td>
+ <td className="py-4 px-6 font-bold text-slate-900 dark:text-white">?{item.price.toFixed(2)}</td>
  <td className="py-4 px-6">
  <select 
  className={`text-xs font-bold rounded-xl px-3 py-1.5 border appearance-none pr-6 cursor-pointer ${

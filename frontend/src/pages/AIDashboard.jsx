@@ -143,7 +143,7 @@ const AIDashboard = () => {
  <DollarSign className="w-4 h-4 text-emerald-500" />
  <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t('ai_dash.revenue')}</span>
  </div>
- <p className="text-2xl font-extrabold text-slate-900 dark:text-white">${summary?.metrics?.total_revenue || '0.00'}</p>
+ <p className="text-2xl font-extrabold text-slate-900 dark:text-white">₹{summary?.metrics?.total_revenue || '0.00'}</p>
  </div>
  <div className="glassmorphism dark:glass-dark p-5 rounded-3xl bg-white dark:bg-transparent transition-colors border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
  <div className="flex items-center gap-2 mb-2">
