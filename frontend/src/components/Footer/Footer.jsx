@@ -1,0 +1,167 @@
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { AuthContext } from '../../context/AuthContext';
+import TechStackModal from '../TechStackModal';
+
+const Footer = () => {
+  const { t } = useTranslation();
+  const { user } = useContext(AuthContext);
+  const [showScroll, setShowScroll] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.scrollY > 400) {
+        setShowScroll(true);
+      } else if (showScroll && window.scrollY <= 400) {
+        setShowScroll(false);
+      }
+    };
+    window.addEventListener('scroll', checkScrollTop);
+    return () => window.removeEventListener('scroll', checkScrollTop);
+  }, [showScroll]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <>
+      <footer className="relative mt-20 pt-20 pb-10 overflow-hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 z-0 pointer-events-none"></div>
+        <div className="absolute -top-[500px] left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+            
+            {/* Brand & Mission Section */}
+            <motion.div 
+              initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp}
+              className="lg:col-span-5 space-y-6"
+            >
+              <Link to="/" className="inline-block" onClick={scrollToTop}>
+                <div className="flex items-center gap-2 group">
+                  <div className="bg-slate-900 text-white w-10 h-10 rounded-xl flex justify-center items-center font-bold text-xl shadow-lg group-hover:bg-primary transition-colors">
+                    R
+                  </div>
+                  <span className="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                    RestaurantBrain AI<span className="text-primary text-2xl leading-none">.</span>
+                  </span>
+                </div>
+              </Link>
+              
+              <p className="text-slate-600 dark:text-slate-300 font-semibold text-lg">
+                AI-Powered Smart Restaurant Operating System
+              </p>
+
+              <div className="pt-4 space-y-3">
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                  Developed for modern restaurant management using:
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['React', 'Flask', 'Tailwind CSS', 'Gemini AI', 'MySQL', 'JWT Authentication'].map(tech => (
+                    <span 
+                      key={tech}
+                      className="px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 shadow-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Quick Links */}
+            <motion.div 
+              initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp}
+              className="lg:col-span-3 lg:col-start-7"
+            >
+              <h4 className="font-extrabold text-slate-900 dark:text-white mb-6">Quick Links</h4>
+              <ul className="space-y-4">
+                <li><Link to="/" onClick={scrollToTop} className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">Home</Link></li>
+                <li><Link to="/contact" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">Contact</Link></li>
+                <li><Link to="/about" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">About Us</Link></li>
+                <li><Link to="/features" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">Features</Link></li>
+                
+                {/* Role based links */}
+                {user?.role === 'Customer' && (
+                  <li><Link to="/customer" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Customer Dashboard</Link></li>
+                )}
+                {user?.role === 'Staff' && (
+                  <li><Link to="/staff" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Staff Dashboard</Link></li>
+                )}
+                {user?.role === 'Restaurant Owner' && (
+                  <>
+                    <li><Link to="/restaurant" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Admin Dashboard</Link></li>
+                    <li><Link to="/ai" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> AI Copilot</Link></li>
+                  </>
+                )}
+              </ul>
+            </motion.div>
+
+            {/* Resources & Legal */}
+            <motion.div 
+              initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp}
+              className="lg:col-span-3"
+            >
+              <h4 className="font-extrabold text-slate-900 dark:text-white mb-6">Resources</h4>
+              <ul className="space-y-4">
+                <li><Link to="/docs" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">Documentation</Link></li>
+                <li><Link to="/faq" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">FAQ</Link></li>
+                <li><Link to="/privacy" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-slate-500 dark:text-slate-400 hover:text-primary font-medium transition-colors">Terms of Service</Link></li>
+              </ul>
+            </motion.div>
+
+          </div>
+
+          <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-4">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white dark:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700 text-slate-400 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md hover:-translate-y-1">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white dark:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700 text-slate-400 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md hover:-translate-y-1">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white dark:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700 text-slate-400 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md hover:-translate-y-1">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+            </div>
+            
+            <div className="text-center md:text-right">
+              <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
+                © {new Date().getFullYear()} RestaurantBrain AI. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Back to top button */}
+      <AnimatePresence>
+        {showScroll && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-primary transition-all hover:scale-110 active:scale-95"
+            aria-label="Back to top"
+          >
+            <ChevronUp className="w-6 h-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default Footer;
