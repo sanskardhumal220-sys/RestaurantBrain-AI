@@ -97,7 +97,23 @@ const Register = () => {
       
     } catch (err) {
       console.error('Registration error:', err.response?.data || err.message || err);
-      toast.error(err.response?.data?.message || err.response?.data?.error || err.message || 'Registration failed. Please try again.');
+      
+      let errorMessage = 'Registration failed. Please try again.';
+      const resData = err.response?.data;
+      
+      if (resData) {
+        if (typeof resData.message === 'string') {
+          errorMessage = resData.message;
+        } else if (typeof resData.error === 'string') {
+          errorMessage = resData.error;
+        } else if (resData.error?.message) {
+          errorMessage = resData.error.message;
+        }
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

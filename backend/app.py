@@ -42,8 +42,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Add SSL context for remote postgres databases (e.g. Supabase, Neon)
 if 'postgresql' in db_url and 'localhost' not in db_url and '127.0.0.1' not in db_url:
+    import ssl
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        'connect_args': {'ssl_context': True}
+        'connect_args': {'ssl_context': ctx}
     }
 
 # JWT Config
