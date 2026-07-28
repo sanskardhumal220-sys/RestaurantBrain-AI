@@ -233,12 +233,12 @@ const RestaurantDashboard = () => {
  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{t('dash.restaurant_management')}</p>
  </div>
  
- <nav className="space-y-2">
+ <nav className="flex flex-row overflow-x-auto hide-scrollbar lg:flex-col gap-2 lg:gap-0 lg:space-y-2 pb-2 lg:pb-0 w-full">
  {tabs.map(tab => (
  <button 
  key={tab.id}
  onClick={() => setActiveTab(tab.id)} 
- className={`w-full text-left px-5 py-4 rounded-2xl transition-all duration-300 flex items-center gap-4 group relative overflow-hidden ${activeTab === tab.id ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 hover:text-slate-900 dark:text-white'}`}
+ className={`w-auto lg:w-full shrink-0 text-left px-4 lg:px-5 py-3 lg:py-4 rounded-2xl transition-all duration-300 flex items-center gap-3 lg:gap-4 group relative overflow-hidden ${activeTab === tab.id ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 hover:text-slate-900 dark:text-white'}`}
  >
  {activeTab === tab.id && (
  <motion.div layoutId="admin-active-tab" className="absolute inset-0 bg-primary z-0" />
@@ -629,16 +629,16 @@ const RestaurantDashboard = () => {
  <motion.div key="tables" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
  <div className="glassmorphism dark:glass-dark p-8 rounded-3xl bg-white/60 dark:bg-transparent transition-colors mb-8 border border-white/50 dark:border-white/10 max-w-2xl">
  <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white"><Plus className="w-5 h-5 bg-slate-900 text-white rounded-full p-0.5" /> Add New Table</h3>
- <form onSubmit={handleAddTable} className="flex gap-4 items-end">
+ <form onSubmit={handleAddTable} className="flex flex-col sm:flex-row gap-4 items-start sm:items-end w-full">
  <div className="flex-1">
  <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Table Identifier</label>
  <input type="text" required placeholder="e.g. T1 or Patio-1" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-slate-900/20 outline-none" value={newTable.table_number} onChange={e => setNewTable({...newTable, table_number: e.target.value})} />
  </div>
- <div className="w-32">
+ <div className="w-full sm:w-32">
  <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Seats</label>
  <input type="number" required placeholder="e.g. 4" min="1" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-slate-900/20 outline-none" value={newTable.capacity} onChange={e => setNewTable({...newTable, capacity: e.target.value})} />
  </div>
- <button type="submit" className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl hover:bg-slate-800 transition-all">Add Table</button>
+ <button type="submit" className="w-full sm:w-auto bg-slate-900 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl hover:bg-slate-800 transition-all">Add Table</button>
  </form>
  </div>
 

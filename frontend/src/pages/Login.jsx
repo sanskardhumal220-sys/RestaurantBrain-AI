@@ -90,7 +90,7 @@ const Login = () => {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="w-full max-w-md z-10"
       >
-        <div className="glassmorphism dark:glass-dark p-8 md:p-10 shadow-2xl relative overflow-hidden">
+        <div className="glassmorphism dark:glass-dark p-6 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden">
           {/* Subtle gradient overlay on card */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 dark:from-white/5 dark:to-transparent pointer-events-none rounded-2xl"></div>
           

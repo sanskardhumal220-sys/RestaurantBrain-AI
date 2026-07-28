@@ -39,7 +39,7 @@ const Home = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.1]"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.1]"
         >
           {t('home.hero_title_main')}
         </motion.h1>
@@ -68,12 +68,12 @@ const Home = () => {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto"
         >
-          <Link to="/register" className="group relative flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg overflow-hidden shadow-[0_0_40px_rgba(15,23,42,0.3)] dark:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105">
+          <Link to="/register" className="w-full sm:w-auto group relative flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg overflow-hidden shadow-[0_0_40px_rgba(15,23,42,0.3)] dark:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10">{t('home.get_started')}</span> 
             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
           </Link>
-          <Link to="#features" className="flex items-center justify-center gap-2 glassmorphism dark:glass-dark text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all hover:scale-105 border border-slate-200/50 dark:border-slate-700/50">
+          <Link to="#features" className="w-full sm:w-auto flex items-center justify-center gap-2 glassmorphism dark:glass-dark text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all hover:scale-105 border border-slate-200/50 dark:border-slate-700/50">
             {t('home.explore_features')}
           </Link>
         </motion.div>
@@ -245,10 +245,10 @@ const Home = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-            <Link to="/login" className="bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
+            <Link to="/login" className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
               {t('home.launch_dashboard')}
             </Link>
-            <Link to="/register" className="glassmorphism dark:glass-dark text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all hover:scale-105">
+            <Link to="/register" className="w-full sm:w-auto flex justify-center glassmorphism dark:glass-dark text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all hover:scale-105">
               {t('home.view_demo')}
             </Link>
           </div>

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Utensils, LogOut, User, Bell, ChevronDown, Bot, Globe } from 'lucide-react';
+import { Utensils, LogOut, User, Bell, ChevronDown, Bot, Globe, Menu, X } from 'lucide-react';
 import { AuthContext } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,6 +18,7 @@ const Navbar = () => {
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -97,7 +98,26 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex items-center space-x-6">
+          {/* Mobile menu button */}
+          <div className="flex md:hidden items-center gap-4">
+            {user && (
+              <button 
+                onClick={() => setNotificationsOpen(!notificationsOpen)}
+                className="relative p-2 text-slate-500 hover:text-slate-900 transition-colors rounded-full"
+              >
+                <Bell className="w-5 h-5" />
+                {hasUnread && <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-white"></span>}
+              </button>
+            )}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-md text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+
+          <div className="hidden md:flex items-center space-x-6">
             {user && (
               <Link to={getDashboardLink()} className="relative text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
                 {t('nav.dashboard')}
@@ -284,6 +304,90 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden border-t border-slate-200/50 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md"
+          >
+            <div className="px-4 pt-2 pb-6 space-y-4 shadow-xl">
+              {user && (
+                <div className="py-2 flex items-center justify-between border-b border-slate-200/50 dark:border-slate-700/50">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-primary/10 rounded-full p-2">
+                      <User className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white text-sm">{user.full_name}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 capitalize">{user.role}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex flex-col space-y-2">
+                {user && (
+                  <Link 
+                    to={getDashboardLink()} 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors"
+                  >
+                    {t('nav.dashboard')}
+                  </Link>
+                )}
+                {user && (user.role?.toLowerCase().includes('restaurant')) && (
+                  <Link 
+                    to="/ai" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 text-sm font-bold text-primary hover:bg-primary/10 rounded-xl transition-colors"
+                  >
+                    <Bot className="w-5 h-5" />
+                    {t('nav.ai_dashboard')}
+                  </Link>
+                )}
+              </div>
+
+              <div className="flex items-center justify-between px-4 py-3 border-t border-slate-200/50 dark:border-slate-700/50">
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center bg-slate-100 dark:bg-slate-800"
+                >
+                  <span className="text-lg leading-none">{theme === 'dark' ? '☀️' : '🌙'}</span>
+                </button>
+              </div>
+
+              <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/50 dark:border-slate-700/50">
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Language</span>
+                <div className="flex gap-2">
+                  <button onClick={() => changeLanguage('en')} className={`px-3 py-1 rounded-lg text-xs font-bold ${i18n.language?.startsWith('en') ? 'bg-primary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>EN</button>
+                  <button onClick={() => changeLanguage('hi')} className={`px-3 py-1 rounded-lg text-xs font-bold ${i18n.language?.startsWith('hi') ? 'bg-primary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>HI</button>
+                </div>
+              </div>
+
+              {user ? (
+                <div className="flex flex-col space-y-2 pt-2">
+                  <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 text-sm text-slate-700 dark:text-slate-200 flex items-center gap-3">
+                    <User className="w-5 h-5" /> Profile
+                  </Link>
+                  <button onClick={handleLogout} className="px-4 py-3 text-sm text-error flex items-center gap-3 w-full text-left font-medium">
+                    <LogOut className="w-5 h-5" /> {t('nav.sign_out')}
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3 pt-4 px-2">
+                  <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="w-full py-3 text-center text-sm font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 rounded-xl">{t('nav.log_in')}</Link>
+                  <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="w-full py-3 text-center bg-slate-900 text-white rounded-xl font-medium text-sm">{t('nav.sign_up')}</Link>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

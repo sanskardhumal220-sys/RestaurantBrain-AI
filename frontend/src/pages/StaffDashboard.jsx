@@ -257,13 +257,13 @@ const StaffDashboard = () => {
  {/* KITCHEN VIEW */}
  {activeTab === 'kitchen' && (
  <motion.div key="kitchen" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1 flex flex-col h-full">
- <div className="grid grid-cols-1 md:grid-cols-4 gap-6 h-full flex-1">
+ <div className="flex overflow-x-auto hide-scrollbar snap-x gap-6 h-full flex-1 pb-4 md:grid md:grid-cols-4">
  {kanbanColumns.map(column => {
  const colOrders = orders.filter(o => o.status === column.id);
  return (
  <div 
  key={column.id} 
- className={`glassmorphism dark:glass-dark bg-white/40 dark:bg-transparent transition-colors border-t-4 ${column.borderColor} rounded-3xl p-4 flex flex-col transition-all duration-300 h-[70vh] min-h-[600px] overflow-hidden`}
+ className={`glassmorphism dark:glass-dark bg-white/40 dark:bg-transparent transition-colors border-t-4 ${column.borderColor} rounded-3xl p-4 flex flex-col transition-all duration-300 h-[70vh] min-h-[600px] overflow-hidden min-w-[85vw] sm:min-w-[320px] md:min-w-0 shrink-0 snap-center`}
  onDragOver={handleDragOver}
  onDragLeave={handleDragLeave}
  onDrop={(e) => handleDrop(e, column.id)}
