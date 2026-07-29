@@ -4,6 +4,9 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 from database.config import db
 from models.user import User
 from models.restaurant import Order, Reservation, MenuItem
+from google.oauth2 import id_token
+from google.auth.transport import requests
+import os
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -177,24 +180,91 @@ def forgot_password():
 @auth_bp.route('/google-login', methods=['POST'])
 def google_login():
     data = request.get_json()
-    email = data.get('email')
-    name = data.get('name')
+    token = data.get('credential')
     
-    if not email:
-        return jsonify({"message": "Google authentication failed"}), 400
+    if not token:
+        return jsonify({"message": "Google authentication failed, no token provided"}), 400
         
-    # Mock Google Login: Check if user exists, if not create a mock customer
-    user = User.query.filter_by(email=email).first()
+    try:
+        # Verify the token
+        client_id = os.environ.get("GOOGLE_CLIENT_ID")
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), client_id)
+        
+        email = idinfo.get('email')
+        name = idinfo.get('name')
+        picture = idinfo.get('picture')
+        google_id = idinfo.get('sub')
+        
+        if not email:
+            return jsonify({"message": "Google authentication failed"}), 400
+            
+        user = User.query.filter_by(email=email).first()
+        
+        if not user:
+            # User doesn't exist, we need them to select a role
+            return jsonify({
+                "requires_role": True,
+                "email": email,
+                "name": name,
+                "picture": picture,
+                "google_id": google_id
+            }), 200
+            
+        # Update existing user if they were email/password before
+        if not user.google_id:
+            user.google_id = google_id
+            user.profile_picture = picture
+            user.auth_provider = 'google'
+            db.session.commit()
+            
+        access_token = create_access_token(identity=str(user.id), additional_claims={"role": user.role})
+        
+        return jsonify({
+            "message": "Google Login successful",
+            "token": access_token,
+            "user": user.to_dict()
+        }), 200
+        
+    except ValueError as e:
+        return jsonify({"message": "Invalid token", "error": str(e)}), 401
+
+@auth_bp.route('/google-register', methods=['POST'])
+def google_register():
+    data = request.get_json()
+    token = data.get('credential')
+    role = data.get('role')
     
-    if not user:
-        # Create a new mock user for the demo
-        hashed_password = generate_password_hash("random_google_password_123")
+    if not token or not role:
+        return jsonify({"message": "Missing token or role"}), 400
+        
+    try:
+        # Verify the token
+        client_id = os.environ.get("GOOGLE_CLIENT_ID")
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), client_id)
+        
+        email = idinfo.get('email')
+        name = idinfo.get('name')
+        picture = idinfo.get('picture')
+        google_id = idinfo.get('sub')
+        
+        if not email:
+            return jsonify({"message": "Google authentication failed"}), 400
+            
+        user = User.query.filter_by(email=email).first()
+        
+        if user:
+            return jsonify({"message": "User already exists"}), 409
+            
+        # Create a new Google user
         user = User(
-            full_name=name or "Google User",
+            full_name=name,
             email=email,
             phone="",
-            password_hash=hashed_password,
-            role="Customer"
+            password_hash=None,
+            role=role,
+            google_id=google_id,
+            profile_picture=picture,
+            auth_provider='google'
         )
         try:
             db.session.add(user)
@@ -203,13 +273,16 @@ def google_login():
             db.session.rollback()
             return jsonify({"message": "Failed to create Google user", "error": str(e)}), 500
             
-    access_token = create_access_token(identity=str(user.id))
-    
-    return jsonify({
-        "message": "Google Login successful",
-        "token": access_token,
-        "user": user.to_dict()
-    }), 200
+        access_token = create_access_token(identity=str(user.id), additional_claims={"role": user.role})
+        
+        return jsonify({
+            "message": "Google Registration successful",
+            "token": access_token,
+            "user": user.to_dict()
+        }), 201
+        
+    except ValueError as e:
+        return jsonify({"message": "Invalid token", "error": str(e)}), 401
 
 @auth_bp.route('/demo', methods=['POST'])
 def demo_login():

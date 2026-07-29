@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import { User, Mail, Phone, Lock, Loader2, Shield, ArrowRight, ArrowLeft, CheckCircle, Eye, EyeOff } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-hot-toast';
+import { GoogleLogin } from '@react-oauth/google';
+import { AuthContext } from '../context/AuthContext';
 
 const Register = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [pendingGoogleToken, setPendingGoogleToken] = useState(null);
+  const [googleLoading, setGoogleLoading] = useState(false);
   
   const [formData, setFormData] = useState({
     fullName: '',
@@ -84,6 +89,26 @@ const Register = () => {
     setLoading(true);
 
     try {
+      if (pendingGoogleToken) {
+        // Submit Google Registration
+        const response = await api.post('/api/auth/google-register', {
+          credential: pendingGoogleToken,
+          role: formData.role
+        });
+        
+        const { token, user } = response.data;
+        login(token, user);
+        
+        // Redirect directly since email is already verified
+        switch(user.role) {
+          case 'Customer': navigate('/customer'); break;
+          case 'Restaurant Owner': navigate('/restaurant'); break;
+          case 'Staff': navigate('/staff'); break;
+          default: navigate('/');
+        }
+        return;
+      }
+
       await api.post('/api/auth/register', {
         fullName: formData.fullName,
         email: formData.email,
@@ -117,6 +142,40 @@ const Register = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    setGoogleLoading(true);
+    const token = credentialResponse.credential;
+    
+    try {
+      const response = await api.post('/api/auth/google-login', { credential: token });
+      
+      if (response.data.requires_role) {
+        // User doesn't exist, proceed to step 3 for role selection
+        setPendingGoogleToken(token);
+        setStep(3);
+        setGoogleLoading(false);
+      } else {
+        // Existing user, log them in
+        const { token: jwt, user } = response.data;
+        login(jwt, user);
+        
+        switch(user.role) {
+          case 'Customer': navigate('/customer'); break;
+          case 'Restaurant Owner': navigate('/restaurant'); break;
+          case 'Staff': navigate('/staff'); break;
+          default: navigate('/');
+        }
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Google registration failed. Please try again.');
+      setGoogleLoading(false);
+    }
+  };
+
+  const handleGoogleError = () => {
+    toast.error('Google Sign-In was unsuccessful.');
   };
 
   const roles = [
@@ -215,6 +274,38 @@ const Register = () => {
                       <span className={step >= 3 ? 'text-primary' : ''}>Role</span>
                     </div>
                   </div>
+
+                  {!pendingGoogleToken && step === 1 && (
+                    <div className="mb-6">
+                      <div className="flex justify-center w-full">
+                        {googleLoading ? (
+                          <div className="w-full flex justify-center items-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur text-sm font-medium text-slate-700 dark:text-slate-200">
+                            <Loader2 className="animate-spin h-5 w-5 mr-2" />
+                            Authenticating...
+                          </div>
+                        ) : (
+                          <div className="w-full flex justify-center">
+                            <GoogleLogin
+                              onSuccess={handleGoogleSuccess}
+                              onError={handleGoogleError}
+                              useOneTap
+                              shape="rectangular"
+                              text="signup_with"
+                              size="large"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div className="relative mt-6 mb-6">
+                        <div className="absolute inset-0 flex items-center">
+                          <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                          <span className="px-4 bg-transparent text-slate-500 dark:text-slate-400 relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="min-h-[300px]">
                     <AnimatePresence mode="wait">
@@ -415,7 +506,7 @@ const Register = () => {
                   </div>
 
                   <div className="mt-8 flex justify-between items-center pt-6 border-t border-slate-200 dark:border-slate-700">
-                    {step > 1 ? (
+                    {step > 1 && !pendingGoogleToken ? (
                       <button
                         type="button"
                         onClick={prevStep}
