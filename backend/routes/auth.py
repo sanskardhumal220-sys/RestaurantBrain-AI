@@ -6,9 +6,57 @@ from models.user import User
 from models.restaurant import Order, Reservation, MenuItem
 from google.oauth2 import id_token
 from google.auth.transport import requests
+from sqlalchemy import text
 import os
 
 auth_bp = Blueprint('auth', __name__)
+
+@auth_bp.route('/migrate-db', methods=['GET'])
+def migrate_db():
+    results = []
+    
+    # 1. Add google_id
+    try:
+        db.session.execute(text("ALTER TABLE users ADD COLUMN google_id VARCHAR(255) UNIQUE;"))
+        db.session.commit()
+        results.append("google_id column added successfully.")
+    except Exception as e:
+        db.session.rollback()
+        results.append(f"google_id skip (may exist): {str(e)}")
+        
+    # 2. Add profile_picture
+    try:
+        db.session.execute(text("ALTER TABLE users ADD COLUMN profile_picture VARCHAR(1000);"))
+        db.session.commit()
+        results.append("profile_picture column added successfully.")
+    except Exception as e:
+        db.session.rollback()
+        results.append(f"profile_picture skip (may exist): {str(e)}")
+        
+    # 3. Add auth_provider
+    try:
+        db.session.execute(text("ALTER TABLE users ADD COLUMN auth_provider VARCHAR(50) DEFAULT 'email' NOT NULL;"))
+        db.session.commit()
+        results.append("auth_provider column added successfully.")
+    except Exception as e:
+        db.session.rollback()
+        results.append(f"auth_provider skip (may exist): {str(e)}")
+        
+    # 4. Make password_hash nullable
+    try:
+        # This syntax works for Postgres
+        db.session.execute(text("ALTER TABLE users ALTER COLUMN password_hash DROP NOT NULL;"))
+        db.session.commit()
+        results.append("password_hash made nullable successfully.")
+    except Exception as e:
+        db.session.rollback()
+        results.append(f"password_hash nullable skip (may already be nullable or SQLite): {str(e)}")
+        
+    return jsonify({
+        "message": "Migration attempts completed.",
+        "details": results
+    }), 200
+
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
