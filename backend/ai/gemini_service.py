@@ -37,7 +37,7 @@ def generate_smart_insights(context_data, lang='en'):
     
     try:
         response = model.models.generate_content(
-            model='gemini-1.5-flash',
+            model='gemini-flash-latest',
             contents=prompt
         )
         text = response.text.strip()
@@ -73,7 +73,7 @@ def copilot_chat(user_message, context_data, lang='en'):
     
     try:
         response = model.models.generate_content(
-            model='gemini-1.5-flash',
+            model='gemini-flash-latest',
             contents=prompt
         )
         return response.text.strip()
@@ -104,7 +104,7 @@ def generate_recommendations(context_data, lang='en'):
     
     try:
         response = model.models.generate_content(
-            model='gemini-1.5-flash',
+            model='gemini-flash-latest',
             contents=prompt
         )
         text = response.text.strip()
@@ -132,7 +132,7 @@ def generate_health_explanation(context_data, score, lang='en'):
     """
     try:
         response = model.models.generate_content(
-            model='gemini-1.5-flash',
+            model='gemini-flash-latest',
             contents=prompt
         )
         return response.text.strip()
@@ -175,7 +175,7 @@ def parse_voice_order(transcript, menu_context):
     
     try:
         response = model.models.generate_content(
-            model='gemini-1.5-flash',
+            model='gemini-flash-latest',
             contents=prompt
         )
         text = response.text.strip()
