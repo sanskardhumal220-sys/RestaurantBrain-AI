@@ -175,7 +175,12 @@ const CustomerDashboard = () => {
  }
  } catch (err) {
  console.error("Error processing voice order", err);
- alert("Error understanding the order. Please try again or use the manual menu.");
+ const backendError = err.response?.data?.error || err.message || "";
+ if (backendError.includes("429") || backendError.includes("RESOURCE_EXHAUSTED") || backendError.includes("Quota")) {
+   alert("Google Gemini API Quota Exceeded. You have made too many AI requests. Please wait a minute and try again.");
+ } else {
+   alert(`Error understanding the order: ${backendError}`);
+ }
  } finally {
  setIsProcessingVoice(false);
  }
