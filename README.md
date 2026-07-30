@@ -120,19 +120,17 @@ The modern restaurant industry suffers from fragmented systems. Owners rely on s
 
 ## 📸 Screenshots
 
-*(Replace the placeholder links with actual images of your project)*
-
 | Landing Page | Login & Google Auth |
 | :---: | :---: |
-| ![Landing Page](https://via.placeholder.com/400x250?text=Landing+Page) | ![Login](https://via.placeholder.com/400x250?text=Login+Screen) |
+| ![Landing Page](./assets/landing.png) | ![Login](./assets/login-google-auth.png) |
 
 | Customer Dashboard | Restaurant Dashboard |
 | :---: | :---: |
-| ![Customer](https://via.placeholder.com/400x250?text=Customer+Dashboard) | ![Owner](https://via.placeholder.com/400x250?text=Owner+Dashboard) |
+| ![Customer Dashboard](./assets/customer-dashboard.png) | ![Restaurant Dashboard](./assets/restaurant-dashboard.png) |
 
 | Staff / KDS Dashboard | AI Copilot Dashboard |
 | :---: | :---: |
-| ![Staff](https://via.placeholder.com/400x250?text=Staff+Dashboard) | ![AI Dashboard](https://via.placeholder.com/400x250?text=AI+Insights) |
+| ![Staff / KDS Dashboard](./assets/staff-dashboard.png) | ![AI Copilot Dashboard](./assets/ai-copilot-dashboard.png) |
 
 ---
 
