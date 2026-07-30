@@ -74,6 +74,7 @@ const Home = () => {
             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
           </Link>
 
+
         </motion.div>
       </section>
 
