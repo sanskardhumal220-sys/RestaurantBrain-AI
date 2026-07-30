@@ -273,6 +273,11 @@ def forgot_password():
         frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:5173')
         reset_link = f"{frontend_url}/reset-password?token={token}&email={email}"
         
+        print("\n" + "="*50)
+        print(f"PASSWORD RESET LINK FOR {email}:")
+        print(reset_link)
+        print("="*50 + "\n")
+        
         send_reset_email(email, reset_link)
 
     # We return success regardless to avoid user enumeration
