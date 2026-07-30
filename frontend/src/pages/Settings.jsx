@@ -40,7 +40,7 @@ const Settings = () => {
               🟡 Beta
             </span>
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl text-lg">
+          <p className="text-slate-600 dark:text-slate-200 max-w-2xl text-lg">
             This module is currently under development. Basic settings are available, and more customization options will be added in future updates.
           </p>
         </motion.div>
@@ -55,22 +55,22 @@ const Settings = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-600"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-6">
                 <div className="p-2 bg-primary/10 rounded-xl text-primary"><User className="w-5 h-5" /></div> Profile
               </h2>
               <div className="space-y-4 mb-6">
-                <div className="flex justify-between items-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/50">
-                  <span className="text-sm text-slate-500 dark:text-slate-400">Name</span>
+                <div className="flex justify-between items-center p-4 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-600">
+                  <span className="text-sm text-slate-500 dark:text-slate-200">Name</span>
                   <span className="font-semibold text-slate-900 dark:text-white">{user.full_name}</span>
                 </div>
-                <div className="flex justify-between items-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/50">
-                  <span className="text-sm text-slate-500 dark:text-slate-400">Email</span>
+                <div className="flex justify-between items-center p-4 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-600">
+                  <span className="text-sm text-slate-500 dark:text-slate-200">Email</span>
                   <span className="font-semibold text-slate-900 dark:text-white">{user.email}</span>
                 </div>
-                <div className="flex justify-between items-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/50">
-                  <span className="text-sm text-slate-500 dark:text-slate-400">Role</span>
+                <div className="flex justify-between items-center p-4 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-600">
+                  <span className="text-sm text-slate-500 dark:text-slate-200">Role</span>
                   <span className="font-semibold text-slate-900 dark:text-white capitalize px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-xs tracking-wide">{user.role}</span>
                 </div>
               </div>
@@ -84,19 +84,19 @@ const Settings = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-600"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-6">
                 <div className="p-2 bg-accent/10 rounded-xl text-accent"><Palette className="w-5 h-5" /></div> Appearance
               </h2>
-              <div className="flex items-center justify-between p-4 bg-white/60 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/50">
+              <div className="flex items-center justify-between p-4 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-600">
                 <div>
                   <span className="block font-semibold text-slate-900 dark:text-white mb-1">Theme Preferences</span>
-                  <span className="text-sm text-slate-500 dark:text-slate-400">Toggle between dark and light mode</span>
+                  <span className="text-sm text-slate-500 dark:text-slate-200">Toggle between dark and light mode</span>
                 </div>
                 <button
                   onClick={toggleTheme}
-                  className="p-3 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center bg-slate-100 dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-600"
+                  className="p-3 text-slate-500 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white transition-colors rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center bg-slate-100 dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-600"
                 >
                   <span className="text-xl leading-none">{theme === 'dark' ? '☀️' : '🌙'}</span>
                 </button>
@@ -108,15 +108,15 @@ const Settings = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-600"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-6">
                 <div className="p-2 bg-purple-500/10 rounded-xl text-purple-500"><Globe className="w-5 h-5" /></div> Language
               </h2>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white/60 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/50 gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-600 gap-4">
                 <div>
                   <span className="block font-semibold text-slate-900 dark:text-white mb-1">System Language</span>
-                  <span className="text-sm text-slate-500 dark:text-slate-400">Select your preferred language</span>
+                  <span className="text-sm text-slate-500 dark:text-slate-200">Select your preferred language</span>
                 </div>
                 <div className="flex gap-2">
                   <button onClick={() => i18n.changeLanguage('en')} className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${i18n.language?.startsWith('en') ? 'bg-primary text-white shadow-md scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>English</button>
@@ -130,7 +130,7 @@ const Settings = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-600"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-6">
                 <div className="p-2 bg-orange-500/10 rounded-xl text-orange-500"><Bell className="w-5 h-5" /></div> Notifications
@@ -141,10 +141,10 @@ const Settings = () => {
                   { key: 'reservation', label: 'Reservation Notifications', desc: 'Updates on table bookings' },
                   { key: 'aiInsights', label: 'AI Insights Notifications', desc: 'Daily summaries and recommendations' }
                 ].map((item) => (
-                  <div key={item.key} className="flex items-center justify-between p-4 bg-white/60 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                  <div key={item.key} className="flex items-center justify-between p-4 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-600">
                     <div>
                       <span className="block font-semibold text-slate-900 dark:text-white mb-0.5">{item.label}</span>
-                      <span className="text-xs text-slate-500 dark:text-slate-400">{item.desc}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-200">{item.desc}</span>
                     </div>
                     <button
                       onClick={() => toggleNotification(item.key)}
@@ -162,13 +162,13 @@ const Settings = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-600"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-6">
                 <div className="p-2 bg-red-500/10 rounded-xl text-red-500"><Shield className="w-5 h-5" /></div> Security
               </h2>
-              <div className="p-5 bg-white/60 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/50">
-                <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">Authentication Method</p>
+              <div className="p-5 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-600">
+                <p className="text-sm font-semibold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-4">Authentication Method</p>
                 
                 {user.google_id ? (
                   <div className="space-y-2">
@@ -185,7 +185,7 @@ const Settings = () => {
                       <p className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-1">
                         <span className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span> Email / Password
                       </p>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">You log in using a standard password.</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-200">You log in using a standard password.</p>
                     </div>
                     <button onClick={() => navigate('/profile')} className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-bold rounded-xl transition-all w-full sm:w-auto border border-slate-200 dark:border-slate-600">
                       Change Password
@@ -203,7 +203,7 @@ const Settings = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
-              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-700/50 sticky top-24"
+              className="glassmorphism dark:glass-dark p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200/50 dark:border-slate-600 sticky top-24"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-6">
                 <div className="p-2 bg-yellow-500/10 rounded-xl text-yellow-500"><AlertTriangle className="w-5 h-5" /></div> Upcoming Features
@@ -218,10 +218,10 @@ const Settings = () => {
                   'Data Export',
                   'Two-Factor Authentication'
                 ].map((feature, i) => (
-                  <li key={i} className="flex flex-col p-4 bg-white/40 dark:bg-slate-800/40 rounded-xl border border-dashed border-slate-300 dark:border-slate-600">
+                  <li key={i} className="flex flex-col p-4 bg-white/40 dark:bg-slate-800 rounded-xl border border-dashed border-slate-300 dark:border-slate-600">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{feature}</span>
-                      <span className="text-[10px] font-bold px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 rounded-md uppercase tracking-wider">Beta</span>
+                      <span className="text-[10px] font-bold px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-200 rounded-md uppercase tracking-wider">Beta</span>
                     </div>
                   </li>
                 ))}
@@ -247,8 +247,8 @@ const Settings = () => {
             <SettingsIcon className="w-6 h-6" />
           </div>
           <p className="text-slate-900 dark:text-white font-bold text-lg">RestaurantBrain AI</p>
-          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1 mb-2 font-medium">Version 1.0</p>
-          <p className="text-xs text-slate-400 dark:text-slate-500">More settings will be available in future updates.</p>
+          <p className="text-slate-500 dark:text-slate-200 text-sm mt-1 mb-2 font-medium">Version 1.0</p>
+          <p className="text-xs text-slate-400 dark:text-slate-300">More settings will be available in future updates.</p>
         </motion.div>
       </div>
     </div>

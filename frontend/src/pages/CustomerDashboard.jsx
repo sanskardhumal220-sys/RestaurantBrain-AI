@@ -199,7 +199,7 @@ const CustomerDashboard = () => {
  <div className="glassmorphism dark:glass-dark p-6 sticky top-28 rounded-3xl space-y-8 bg-white/60 dark:bg-transparent transition-colors">
  <div>
  <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Dashboard</h2>
- <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Welcome back, {user?.full_name || 'Guest'}</p>
+ <p className="text-sm text-slate-500 dark:text-slate-200 mt-1">Welcome back, {user?.full_name || 'Guest'}</p>
  </div>
  
  <nav className="flex flex-row overflow-x-auto hide-scrollbar md:flex-col gap-2 md:gap-0 md:space-y-2 pb-2 md:pb-0 w-full">
@@ -266,7 +266,7 @@ const CustomerDashboard = () => {
  disabled={isProcessingVoice}
  className={`ml-3 p-3 rounded-2xl shrink-0 flex items-center justify-center transition-all ${
  isListening ? 'bg-red-500 text-white animate-pulse shadow-lg' : 
- isProcessingVoice ? 'bg-slate-200 text-slate-500 dark:text-slate-400 cursor-not-allowed' : 
+ isProcessingVoice ? 'bg-slate-200 text-slate-500 dark:text-slate-200 cursor-not-allowed' : 
  'bg-primary text-white hover:bg-primary-dark shadow-md hover:shadow-lg hover:-translate-y-0.5'
  }`}
  title="AI Voice Ordering"
@@ -304,7 +304,7 @@ const CustomerDashboard = () => {
  <div className="text-center py-20">
  <Utensils className="w-16 h-16 mx-auto text-slate-300 mb-4" />
  <h3 className="text-xl font-bold text-slate-700 dark:text-slate-200">{t('dash.no_items')}</h3>
- <p className="text-slate-500 dark:text-slate-400 mt-2">{t('dash.try_adjusting')}</p>
+ <p className="text-slate-500 dark:text-slate-200 mt-2">{t('dash.try_adjusting')}</p>
  </div>
  ) : (
  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -351,7 +351,7 @@ const CustomerDashboard = () => {
  <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">{item.name}</h4>
  <span className="font-extrabold text-lg text-slate-900 dark:text-white">${item.price.toFixed(2)}</span>
  </div>
- <p className="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-6 flex-1 leading-relaxed">{item.description}</p>
+ <p className="text-slate-500 dark:text-slate-200 text-sm line-clamp-2 mb-6 flex-1 leading-relaxed">{item.description}</p>
  
  <div className="flex items-center justify-between mt-auto">
  <span className={`text-xs font-bold px-3 py-1.5 rounded-full border ${
@@ -385,7 +385,7 @@ const CustomerDashboard = () => {
  <motion.div key="tracking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
  <div className="glassmorphism dark:glass-dark p-8 rounded-3xl bg-white/60 dark:bg-transparent transition-colors mb-8 border border-white/50 dark:border-white/10">
  <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">{t('dash.live_tracking')}</h2>
- <p className="text-slate-500 dark:text-slate-400">{t('dash.watch_journey')}</p>
+ <p className="text-slate-500 dark:text-slate-200">{t('dash.watch_journey')}</p>
  </div>
  
  <div className="space-y-8">
@@ -393,7 +393,7 @@ const CustomerDashboard = () => {
  <div className="glassmorphism dark:glass-dark p-16 text-center rounded-3xl border border-dashed border-slate-300">
  <Compass className="w-16 h-16 mx-auto text-slate-300 mb-4" />
  <h3 className="text-xl font-bold text-slate-700 dark:text-slate-200">{t('dash.no_active_orders')}</h3>
- <p className="text-slate-500 dark:text-slate-400 mt-2">{t('dash.hungry')}</p>
+ <p className="text-slate-500 dark:text-slate-200 mt-2">{t('dash.hungry')}</p>
  <button onClick={() => setActiveTab('menu')} className="mt-6 bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-primary-dark transition-colors shadow-lg">{t('dash.explore_menu')}</button>
  </div>
  ) : (
@@ -408,7 +408,7 @@ const CustomerDashboard = () => {
  <div>
  <div className="flex items-center gap-3 mb-1">
  <span className="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Order #{order.id.toString().padStart(4, '0')}</span>
- <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{new Date(order.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+ <span className="text-sm font-medium text-slate-500 dark:text-slate-200">{new Date(order.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
  </div>
  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-2">{t('dash.currently')}: <span className="text-primary">{order.status}</span></h3>
  </div>
@@ -419,7 +419,7 @@ const CustomerDashboard = () => {
  </div>
  <div>
  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">{t('dash.est_prep')}</span>
- <span className="text-2xl font-extrabold text-slate-900 dark:text-white">{order.estimated_prep_time}<span className="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1">{t('dash.min')}</span></span>
+ <span className="text-2xl font-extrabold text-slate-900 dark:text-white">{order.estimated_prep_time}<span className="text-sm font-medium text-slate-500 dark:text-slate-200 ml-1">{t('dash.min')}</span></span>
  </div>
  </div>
  </div>
@@ -470,7 +470,7 @@ const CustomerDashboard = () => {
  ))}
  </div>
  <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-between items-end">
- <span className="text-slate-500 dark:text-slate-400 font-medium">Total Paid</span>
+ <span className="text-slate-500 dark:text-slate-200 font-medium">Total Paid</span>
  <span className="text-2xl font-extrabold text-slate-900 dark:text-white">${order.total_amount.toFixed(2)}</span>
  </div>
  </div>
@@ -495,13 +495,13 @@ const CustomerDashboard = () => {
  <Calendar className="w-10 h-10 text-primary" />
  </div>
  <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{t('dash.reserve_table')}</h2>
- <p className="text-slate-500 dark:text-slate-400 mt-3 text-lg">{t('dash.experience_vibe')}</p>
+ <p className="text-slate-500 dark:text-slate-200 mt-3 text-lg">{t('dash.experience_vibe')}</p>
  </div>
  
  <form onSubmit={handleBookTable} className="space-y-6 relative z-10">
  <div className="bg-white dark:bg-transparent transition-colors p-2 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col">
  <div className="px-4 py-2 bg-slate-50 dark:bg-slate-900 transition-colors rounded-xl mb-2">
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Select Date</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-1">Select Date</label>
  <input 
  type="date" 
  required 
@@ -513,7 +513,7 @@ const CustomerDashboard = () => {
  
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
  <div className="px-4 py-2 bg-slate-50 dark:bg-slate-900 transition-colors rounded-xl">
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Time</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-1">Time</label>
  <input 
  type="time" 
  required 
@@ -523,7 +523,7 @@ const CustomerDashboard = () => {
  />
  </div>
  <div className="px-4 py-2 bg-slate-50 dark:bg-slate-900 transition-colors rounded-xl">
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Guests</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-1">Guests</label>
  <input 
  type="number" 
  min="1" max="20"
@@ -553,12 +553,12 @@ const CustomerDashboard = () => {
  <motion.div key="my_reservations" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
  <div className="glassmorphism dark:glass-dark p-8 rounded-3xl bg-white/60 dark:bg-transparent transition-colors mb-8 border border-white/50 dark:border-white/10">
  <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">My Bookings</h2>
- <p className="text-slate-500 dark:text-slate-400">Manage your upcoming and past reservations.</p>
+ <p className="text-slate-500 dark:text-slate-200">Manage your upcoming and past reservations.</p>
  </div>
 
  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
  {myReservations.length === 0 ? (
- <div className="col-span-full glassmorphism dark:glass-dark p-12 text-center text-slate-500 dark:text-slate-400 rounded-3xl border border-dashed border-slate-300">
+ <div className="col-span-full glassmorphism dark:glass-dark p-12 text-center text-slate-500 dark:text-slate-200 rounded-3xl border border-dashed border-slate-300">
  <Calendar className="w-16 h-16 mx-auto text-slate-300 mb-4" />
  <p className="text-lg font-medium">You have no upcoming reservations.</p>
  <button onClick={() => setActiveTab('reservation')} className="mt-4 text-primary font-bold hover:underline">Book a Table Now</button>
@@ -629,13 +629,13 @@ const CustomerDashboard = () => {
  Your Order
  </h2>
  <button onClick={() => setCartOpen(false)} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
- <X className="w-6 h-6 text-slate-500 dark:text-slate-400" />
+ <X className="w-6 h-6 text-slate-500 dark:text-slate-200" />
  </button>
  </div>
  
  <div className="flex-1 overflow-y-auto p-6 bg-slate-50 dark:bg-slate-900 transition-colors">
  {cart.length === 0 ? (
- <div className="h-full flex flex-col items-center justify-center text-slate-500 dark:text-slate-400">
+ <div className="h-full flex flex-col items-center justify-center text-slate-500 dark:text-slate-200">
  <div className="w-24 h-24 bg-slate-200 rounded-full flex items-center justify-center mb-6">
  <ShoppingCart className="w-10 h-10 text-slate-400" />
  </div>
@@ -674,11 +674,11 @@ const CustomerDashboard = () => {
  {cart.length > 0 && (
  <div className="p-6 bg-white dark:bg-transparent transition-colors border-t border-slate-100 dark:border-slate-700 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
  <div className="space-y-3 mb-6">
- <div className="flex justify-between text-slate-500 dark:text-slate-400 text-sm font-medium">
+ <div className="flex justify-between text-slate-500 dark:text-slate-200 text-sm font-medium">
  <span>Subtotal</span>
  <span>${getCartTotal().toFixed(2)}</span>
  </div>
- <div className="flex justify-between text-slate-500 dark:text-slate-400 text-sm font-medium">
+ <div className="flex justify-between text-slate-500 dark:text-slate-200 text-sm font-medium">
  <span>Taxes & Fees</span>
  <span>Calculated at checkout</span>
  </div>
@@ -691,17 +691,17 @@ const CustomerDashboard = () => {
  
  <div className="mb-6 space-y-4">
  <div className="flex gap-2 p-1 bg-slate-100 rounded-xl">
- <button onClick={() => setOrderType('Takeaway')} className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${orderType === 'Takeaway' ? 'bg-white dark:bg-transparent transition-colors shadow-sm text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>Takeaway</button>
- <button onClick={() => setOrderType('Dine-In')} className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${orderType === 'Dine-In' ? 'bg-white dark:bg-transparent transition-colors shadow-sm text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>Dine-In</button>
+ <button onClick={() => setOrderType('Takeaway')} className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${orderType === 'Takeaway' ? 'bg-white dark:bg-transparent transition-colors shadow-sm text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-200'}`}>Takeaway</button>
+ <button onClick={() => setOrderType('Dine-In')} className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${orderType === 'Dine-In' ? 'bg-white dark:bg-transparent transition-colors shadow-sm text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-200'}`}>Dine-In</button>
  </div>
  {orderType === 'Dine-In' && (
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Number of Guests</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Number of Guests</label>
  <input type="number" min="1" value={guests} onChange={(e) => setGuests(e.target.value)} className="w-full px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-900 transition-colors focus:bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
  </div>
  )}
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Order Notes</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Order Notes</label>
  <textarea 
  placeholder="e.g. Extra spicy, no onions..." 
  rows="2"

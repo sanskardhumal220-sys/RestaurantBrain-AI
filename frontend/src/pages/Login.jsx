@@ -150,7 +150,7 @@ const Login = () => {
                 >
                   <div className="text-center mb-6">
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Complete Profile</h2>
-                    <p className="text-slate-500 dark:text-slate-400 mt-2">Almost there! Please select your role.</p>
+                    <p className="text-slate-500 dark:text-slate-200 mt-2">Almost there! Please select your role.</p>
                   </div>
                   
                   <div className="space-y-3 mb-6">
@@ -169,7 +169,7 @@ const Login = () => {
                         </div>
                         <div>
                           <h4 className={`font-semibold ${selectedRole === role.id ? 'text-primary' : 'text-slate-800 dark:text-slate-200'}`}>{role.title}</h4>
-                          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{role.desc}</p>
+                          <p className="text-sm text-slate-500 dark:text-slate-200 mt-1">{role.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -204,7 +204,7 @@ const Login = () => {
                     <Utensils className="h-8 w-8 text-primary" />
                   </motion.div>
                   <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Welcome Back</h2>
-                  <p className="text-slate-500 dark:text-slate-400 mt-2">Sign in to your RestaurantBrain account</p>
+                  <p className="text-slate-500 dark:text-slate-200 mt-2">Sign in to your RestaurantBrain account</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -217,7 +217,7 @@ const Login = () => {
                       <input
                         type="email"
                         required
-                        className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm transition-all dark:text-white outline-none"
+                        className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 backdrop-blur-sm transition-all dark:text-white outline-none"
                         placeholder="you@example.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -234,7 +234,7 @@ const Login = () => {
                       <input
                         type={showPassword ? "text" : "password"}
                         required
-                        className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm transition-all dark:text-white outline-none"
+                        className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 backdrop-blur-sm transition-all dark:text-white outline-none"
                         placeholder="••••••••"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -258,7 +258,7 @@ const Login = () => {
                         checked={rememberMe}
                         onChange={(e) => setRememberMe(e.target.checked)}
                       />
-                      <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-600 dark:text-slate-400 cursor-pointer">
+                      <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-600 dark:text-slate-200 cursor-pointer">
                         {t('auth.remember')}
                       </label>
                     </div>
@@ -285,7 +285,7 @@ const Login = () => {
                         <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
                       </div>
                       <div className="relative flex justify-center text-sm">
-                        <span className="px-4 bg-transparent text-slate-500 dark:text-slate-400 relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
+                        <span className="px-4 bg-transparent text-slate-500 dark:text-slate-200 relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
                       </div>
                     </div>
                     
@@ -312,7 +312,7 @@ const Login = () => {
                   
                 </form>
                 
-                <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+                <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-200">
                   {t('auth.dont_have_account')}{' '}
                   <Link to="/register" className="font-medium text-primary hover:text-primary-dark transition-colors">
                     {t('auth.sign_up_link')}

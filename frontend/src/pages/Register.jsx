@@ -256,7 +256,7 @@ const Register = () => {
                 >
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">{t('auth.create_account')}</h2>
-                    <p className="text-slate-500 dark:text-slate-400 mt-2">Join RestaurantBrain in just a few steps</p>
+                    <p className="text-slate-500 dark:text-slate-200 mt-2">Join RestaurantBrain in just a few steps</p>
                   </div>
 
                   {/* Progress Bar */}
@@ -268,7 +268,7 @@ const Register = () => {
                         className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"
                       ></motion.div>
                     </div>
-                    <div className="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-400 px-1">
+                    <div className="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-200 px-1">
                       <span className={step >= 1 ? 'text-primary' : ''}>Details</span>
                       <span className={step >= 2 ? 'text-primary' : ''}>Password</span>
                       <span className={step >= 3 ? 'text-primary' : ''}>Role</span>
@@ -301,7 +301,7 @@ const Register = () => {
                           <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
                         </div>
                         <div className="relative flex justify-center text-sm">
-                          <span className="px-4 bg-transparent text-slate-500 dark:text-slate-400 relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
+                          <span className="px-4 bg-transparent text-slate-500 dark:text-slate-200 relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
                         </div>
                       </div>
                     </div>
@@ -328,7 +328,7 @@ const Register = () => {
                               <input
                                 type="text"
                                 name="fullName"
-                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                                 placeholder="John Doe"
                                 value={formData.fullName}
                                 onChange={handleChange}
@@ -345,7 +345,7 @@ const Register = () => {
                               <input
                                 type="email"
                                 name="email"
-                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                                 placeholder="you@example.com"
                                 value={formData.email}
                                 onChange={handleChange}
@@ -362,7 +362,7 @@ const Register = () => {
                               <input
                                 type="tel"
                                 name="phone"
-                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                                 placeholder="+1 (555) 000-0000"
                                 value={formData.phone}
                                 onChange={handleChange}
@@ -390,7 +390,7 @@ const Register = () => {
                               <input
                                 type={showPassword ? "text" : "password"}
                                 name="password"
-                                className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                                className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                                 placeholder="••••••••"
                                 value={formData.password}
                                 onChange={handleChange}
@@ -407,7 +407,7 @@ const Register = () => {
                             {/* Password Strength Meter */}
                             <div className="mt-3">
                               <div className="flex justify-between text-xs mb-1">
-                                <span className="text-slate-500 dark:text-slate-400">Password strength</span>
+                                <span className="text-slate-500 dark:text-slate-200">Password strength</span>
                                 <span className="font-medium text-slate-700 dark:text-slate-300">{strength}%</span>
                               </div>
                               <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
@@ -418,7 +418,7 @@ const Register = () => {
                                   transition={{ duration: 0.3 }}
                                 />
                               </div>
-                              <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-400">
+                              <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-200">
                                 <div className={`flex items-center gap-1 ${formData.password.length >= 8 ? 'text-green-600 dark:text-green-400' : ''}`}>
                                   <CheckCircle className="w-3 h-3" /> Min 8 chars
                                 </div>
@@ -447,7 +447,7 @@ const Register = () => {
                               <input
                                 type={showConfirmPassword ? "text" : "password"}
                                 name="confirmPassword"
-                                className={`block w-full pl-10 pr-10 py-3 border rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white bg-white/50 dark:bg-slate-800/50 ${
+                                className={`block w-full pl-10 pr-10 py-3 border rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white bg-white/50 dark:bg-slate-800 ${
                                   formData.confirmPassword && formData.password !== formData.confirmPassword 
                                   ? 'border-red-500 focus:border-red-500' 
                                   : 'border-slate-200 dark:border-slate-700 focus:border-primary'
@@ -494,7 +494,7 @@ const Register = () => {
                                 </div>
                                 <div>
                                   <h4 className={`font-semibold ${formData.role === role.id ? 'text-primary' : 'text-slate-800 dark:text-slate-200'}`}>{role.title}</h4>
-                                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{role.desc}</p>
+                                  <p className="text-sm text-slate-500 dark:text-slate-200 mt-1">{role.desc}</p>
                                 </div>
                               </div>
                             ))}
@@ -510,7 +510,7 @@ const Register = () => {
                       <button
                         type="button"
                         onClick={prevStep}
-                        className="flex items-center text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+                        className="flex items-center text-sm font-medium text-slate-600 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
                       >
                         <ArrowLeft className="w-4 h-4 mr-1" />
                         Back
@@ -545,7 +545,7 @@ const Register = () => {
                     )}
                   </div>
                   
-                  <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+                  <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-200">
                     {t('auth.already_have_account')}{' '}
                     <Link to="/login" className="font-medium text-primary hover:text-primary-dark transition-colors">
                       {t('auth.sign_in_link')}

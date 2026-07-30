@@ -82,7 +82,7 @@ const Home = () => {
       <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">{t('home.features_title')}</h2>
-          <p className="text-xl text-slate-600 dark:text-slate-400">{t('home.features_desc')}</p>
+          <p className="text-xl text-slate-600 dark:text-slate-200">{t('home.features_desc')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -144,7 +144,7 @@ const Home = () => {
                 </div>
                 <h4 className="text-primary font-bold mb-2 tracking-widest uppercase text-sm">{item.step}</h4>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400">{item.desc}</p>
+                <p className="text-slate-600 dark:text-slate-200">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -190,7 +190,7 @@ const Home = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <h4 className="flex items-center gap-2 text-primary font-bold mb-2"><Laptop className="w-5 h-5"/> Frontend</h4>
-                <ul className="text-slate-600 dark:text-slate-400 space-y-1">
+                <ul className="text-slate-600 dark:text-slate-200 space-y-1">
                   <li>React</li>
                   <li>Tailwind CSS</li>
                   <li>Framer Motion</li>
@@ -198,26 +198,26 @@ const Home = () => {
               </div>
               <div>
                 <h4 className="flex items-center gap-2 text-primary font-bold mb-2"><Server className="w-5 h-5"/> Backend</h4>
-                <ul className="text-slate-600 dark:text-slate-400 space-y-1">
+                <ul className="text-slate-600 dark:text-slate-200 space-y-1">
                   <li>Python</li>
                   <li>Flask</li>
                 </ul>
               </div>
               <div>
                 <h4 className="flex items-center gap-2 text-primary font-bold mb-2"><Database className="w-5 h-5"/> Database</h4>
-                <ul className="text-slate-600 dark:text-slate-400 space-y-1">
+                <ul className="text-slate-600 dark:text-slate-200 space-y-1">
                   <li>MySQL / SQLAlchemy</li>
                 </ul>
               </div>
               <div>
                 <h4 className="flex items-center gap-2 text-primary font-bold mb-2"><Shield className="w-5 h-5"/> Authentication</h4>
-                <ul className="text-slate-600 dark:text-slate-400 space-y-1">
+                <ul className="text-slate-600 dark:text-slate-200 space-y-1">
                   <li>JWT</li>
                 </ul>
               </div>
               <div className="sm:col-span-2">
                 <h4 className="flex items-center gap-2 text-primary font-bold mb-2"><Bot className="w-5 h-5"/> Artificial Intelligence</h4>
-                <ul className="text-slate-600 dark:text-slate-400 space-y-1">
+                <ul className="text-slate-600 dark:text-slate-200 space-y-1">
                   <li>Google Gemini AI</li>
                 </ul>
               </div>

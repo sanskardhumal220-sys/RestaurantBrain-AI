@@ -189,7 +189,7 @@ const StaffDashboard = () => {
  { id: 'Received', title: 'Received', icon: <Clock className="w-5 h-5 text-blue-500" />, borderColor: 'border-blue-500' },
  { id: 'Preparing', title: 'Preparing', icon: <Utensils className="w-5 h-5 text-orange-500" />, borderColor: 'border-orange-500' },
  { id: 'Ready', title: 'Ready', icon: <CheckCircle2 className="w-5 h-5 text-emerald-500" />, borderColor: 'border-emerald-500' },
- { id: 'Completed', title: 'Completed', icon: <Check className="w-5 h-5 text-slate-500 dark:text-slate-400" />, borderColor: 'border-slate-500' }
+ { id: 'Completed', title: 'Completed', icon: <Check className="w-5 h-5 text-slate-500 dark:text-slate-200" />, borderColor: 'border-slate-500' }
  ];
 
  return (
@@ -200,7 +200,7 @@ const StaffDashboard = () => {
  <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
  <div>
  <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Operations Center</h1>
- <p className="text-slate-500 dark:text-slate-400 font-medium">Real-time restaurant orchestration.</p>
+ <p className="text-slate-500 dark:text-slate-200 font-medium">Real-time restaurant orchestration.</p>
  </div>
  
  <div className="flex items-center gap-4">
@@ -214,13 +214,13 @@ const StaffDashboard = () => {
  <div className="bg-white dark:bg-transparent transition-colors p-1.5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 inline-flex">
  <button 
  onClick={() => setActiveTab('kitchen')} 
- className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold transition-all ${activeTab === 'kitchen' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-50 dark:bg-slate-900 transition-colors'}`}
+ className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold transition-all ${activeTab === 'kitchen' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 dark:text-slate-200 hover:text-slate-900 dark:text-white hover:bg-slate-50 dark:bg-slate-900 transition-colors'}`}
  >
  <ChefHat className="w-5 h-5" /> Kitchen
  </button>
  <button 
  onClick={() => setActiveTab('waiter')} 
- className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold transition-all ${activeTab === 'waiter' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-50 dark:bg-slate-900 transition-colors'}`}
+ className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold transition-all ${activeTab === 'waiter' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 dark:text-slate-200 hover:text-slate-900 dark:text-white hover:bg-slate-50 dark:bg-slate-900 transition-colors'}`}
  >
  <Coffee className="w-5 h-5" /> Floor
  </button>
@@ -242,7 +242,7 @@ const StaffDashboard = () => {
  <div key={i} className="glassmorphism dark:glass-dark bg-white/80 dark:bg-transparent transition-colors p-4 rounded-2xl border border-white dark:border-white/10 shadow-sm flex items-center gap-4">
  <div className="p-3 bg-slate-50 dark:bg-slate-900 transition-colors rounded-xl">{kpi.icon}</div>
  <div>
- <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">{kpi.label}</p>
+ <p className="text-xs font-bold text-slate-500 dark:text-slate-200 uppercase">{kpi.label}</p>
  <p className="text-xl font-extrabold text-slate-900 dark:text-white">{kpi.val}</p>
  </div>
  </div>
@@ -327,12 +327,12 @@ const StaffDashboard = () => {
  {order.table_id ? (
  <div className="flex justify-between items-center">
  <span className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2"><MapPin className="w-4 h-4 text-primary"/> Table {order.table_number || 'T?'}</span>
- <span className="text-xs font-bold text-slate-500 dark:text-slate-400 bg-white dark:bg-transparent transition-colors px-2 py-1 rounded shadow-sm flex items-center gap-1"><Users className="w-3 h-3"/> {order.guests || 1}</span>
+ <span className="text-xs font-bold text-slate-500 dark:text-slate-200 bg-white dark:bg-transparent transition-colors px-2 py-1 rounded shadow-sm flex items-center gap-1"><Users className="w-3 h-3"/> {order.guests || 1}</span>
  </div>
  ) : (
  <span className="font-bold text-indigo-600 flex items-center gap-2"><Utensils className="w-4 h-4"/> Takeaway Order</span>
  )}
- <div className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">{order.customer_name || 'Guest'}</div>
+ <div className="text-xs font-medium text-slate-500 dark:text-slate-200 mt-1">{order.customer_name || 'Guest'}</div>
  </div>
  
  {/* Order Items */}
@@ -396,7 +396,7 @@ const StaffDashboard = () => {
  <motion.div key="waiter" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
  {orders.filter(o => o.status === 'Ready' || o.status === 'Served').length === 0 ? (
- <div className="col-span-full glassmorphism dark:glass-dark p-16 text-center text-slate-500 dark:text-slate-400 rounded-3xl border border-dashed border-slate-300 bg-white/50 dark:bg-transparent transition-colors">
+ <div className="col-span-full glassmorphism dark:glass-dark p-16 text-center text-slate-500 dark:text-slate-200 rounded-3xl border border-dashed border-slate-300 bg-white/50 dark:bg-transparent transition-colors">
  <Coffee className="w-16 h-16 mx-auto text-slate-300 mb-4" />
  <h3 className="text-xl font-bold text-slate-700 dark:text-slate-200">All clear!</h3>
  <p className="mt-2">No orders waiting to be served right now.</p>
@@ -420,7 +420,7 @@ const StaffDashboard = () => {
  <span className="text-xs font-black text-slate-400 uppercase tracking-wider">Order #{order.id}</span>
  <span className={`text-[10px] font-bold px-2 py-0.5 rounded border uppercase tracking-wider w-max ${priorityColors[priority]}`}>{priority}</span>
  </div>
- <div className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-full">
+ <div className="text-xs font-bold text-slate-500 dark:text-slate-200 flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-full">
  <Clock className="w-3 h-3" /> Wait: {elapsed}m
  </div>
  </div>

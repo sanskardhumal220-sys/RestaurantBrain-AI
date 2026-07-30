@@ -123,7 +123,7 @@ const AIDashboard = () => {
  <span className="bg-primary/10 p-2 rounded-xl"><Bot className="w-8 h-8 text-primary" /></span>
  {t('ai_dash.title')}
  </h1>
- <p className="text-slate-500 dark:text-slate-400 mt-1">{t('ai_dash.subtitle')}</p>
+ <p className="text-slate-500 dark:text-slate-200 mt-1">{t('ai_dash.subtitle')}</p>
  </div>
  </div>
 
@@ -141,28 +141,28 @@ const AIDashboard = () => {
  <div className="glassmorphism dark:glass-dark p-5 rounded-3xl bg-white dark:bg-transparent transition-colors border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
  <div className="flex items-center gap-2 mb-2">
  <DollarSign className="w-4 h-4 text-emerald-500" />
- <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t('ai_dash.revenue')}</span>
+ <span className="text-sm font-medium text-slate-500 dark:text-slate-200">{t('ai_dash.revenue')}</span>
  </div>
  <p className="text-2xl font-extrabold text-slate-900 dark:text-white">₹{summary?.metrics?.total_revenue || '0.00'}</p>
  </div>
  <div className="glassmorphism dark:glass-dark p-5 rounded-3xl bg-white dark:bg-transparent transition-colors border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
  <div className="flex items-center gap-2 mb-2">
  <ShoppingBag className="w-4 h-4 text-blue-500" />
- <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t('ai_dash.orders')}</span>
+ <span className="text-sm font-medium text-slate-500 dark:text-slate-200">{t('ai_dash.orders')}</span>
  </div>
  <p className="text-2xl font-extrabold text-slate-900 dark:text-white">{summary?.metrics?.total_orders || 0}</p>
  </div>
  <div className="glassmorphism dark:glass-dark p-5 rounded-3xl bg-white dark:bg-transparent transition-colors border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
  <div className="flex items-center gap-2 mb-2">
  <Clock className="w-4 h-4 text-orange-500" />
- <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t('ai_dash.pending')}</span>
+ <span className="text-sm font-medium text-slate-500 dark:text-slate-200">{t('ai_dash.pending')}</span>
  </div>
  <p className="text-2xl font-extrabold text-slate-900 dark:text-white">{summary?.metrics?.pending_orders || 0}</p>
  </div>
  <div className="glassmorphism dark:glass-dark p-5 rounded-3xl bg-white dark:bg-transparent transition-colors border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
  <div className="flex items-center gap-2 mb-2">
  <AlertTriangle className="w-4 h-4 text-red-500" />
- <span className="text-sm font-medium text-slate-500 dark:text-slate-400">{t('ai_dash.stock_alerts')}</span>
+ <span className="text-sm font-medium text-slate-500 dark:text-slate-200">{t('ai_dash.stock_alerts')}</span>
  </div>
  <p className="text-2xl font-extrabold text-slate-900 dark:text-white">
  {(summary?.inventory?.low_stock?.length || 0) + (summary?.inventory?.out_of_stock?.length || 0)}
@@ -201,7 +201,7 @@ const AIDashboard = () => {
  <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">{health.explanation}</p>
  </>
  ) : (
- <p className="text-slate-500 dark:text-slate-400">{t('ai_dash.unavailable')}</p>
+ <p className="text-slate-500 dark:text-slate-200">{t('ai_dash.unavailable')}</p>
  )}
  </div>
  </div>
@@ -310,7 +310,7 @@ const AIDashboard = () => {
  <div className="mt-0.5 bg-amber-50 p-1.5 rounded-lg h-fit"><Lightbulb className="w-4 h-4 text-amber-500" /></div>
  <div>
  <h3 className="font-bold text-sm text-slate-800 dark:text-slate-100 mb-1">{rec.title}</h3>
- <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{rec.description}</p>
+ <p className="text-sm text-slate-500 dark:text-slate-200 leading-relaxed">{rec.description}</p>
  </div>
  </motion.div>
  ))

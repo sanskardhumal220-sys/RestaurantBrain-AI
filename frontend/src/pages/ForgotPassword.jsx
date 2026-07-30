@@ -53,7 +53,7 @@ const ForgotPassword = () => {
           
           <div className="relative z-10">
             <div className="mb-6">
-              <Link to="/login" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+              <Link to="/login" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-200 dark:hover:text-slate-200 transition-colors">
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to login
               </Link>
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
                 <ShieldAlert className="h-8 w-8 text-orange-500" />
               </motion.div>
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Forgot Password</h2>
-              <p className="text-slate-500 dark:text-slate-400 mt-2">Enter your email and we'll send a reset link.</p>
+              <p className="text-slate-500 dark:text-slate-200 mt-2">Enter your email and we'll send a reset link.</p>
             </div>
 
             {status === 'success' ? (
@@ -100,7 +100,7 @@ const ForgotPassword = () => {
                     <input
                       type="email"
                       required
-                      className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                      className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                       placeholder="you@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}

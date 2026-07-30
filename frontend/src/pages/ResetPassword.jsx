@@ -42,7 +42,7 @@ const ResetPassword = () => {
             <Lock className="w-8 h-8 text-red-500" />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Invalid Reset Link</h2>
-          <p className="text-slate-500 dark:text-slate-400 mb-6">This password reset link is invalid or has expired.</p>
+          <p className="text-slate-500 dark:text-slate-200 mb-6">This password reset link is invalid or has expired.</p>
           <Link to="/forgot-password" className="inline-flex justify-center items-center py-2.5 px-6 rounded-xl text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 transition-colors w-full">
             Request New Link
           </Link>
@@ -80,7 +80,7 @@ const ResetPassword = () => {
                 <KeyRound className="h-8 w-8 text-primary" />
               </motion.div>
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Set New Password</h2>
-              <p className="text-slate-500 dark:text-slate-400 mt-2">Create a new password for {email}</p>
+              <p className="text-slate-500 dark:text-slate-200 mt-2">Create a new password for {email}</p>
             </div>
 
             {status === 'success' ? (
@@ -107,7 +107,7 @@ const ResetPassword = () => {
                     <input
                       type={showPassword ? "text" : "password"}
                       required
-                      className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                      className="block w-full pl-10 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                       placeholder="••••••••"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -131,7 +131,7 @@ const ResetPassword = () => {
                     <input
                       type="password"
                       required
-                      className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                      className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                       placeholder="••••••••"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}

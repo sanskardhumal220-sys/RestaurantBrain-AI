@@ -111,7 +111,7 @@ const Navbar = () => {
             )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+              className="p-2 rounded-md text-slate-500 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -138,7 +138,7 @@ const Navbar = () => {
 
             <button
               onClick={toggleTheme}
-              className="relative p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center"
+              className="relative p-2 text-slate-500 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center"
               title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             >
               <span className="text-lg leading-none">{theme === 'dark' ? '☀️' : '🌙'}</span>
@@ -312,18 +312,18 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-slate-200/50 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md"
+            className="md:hidden border-t border-slate-200/50 dark:border-white/10 bg-white/95 dark:bg-slate-900 backdrop-blur-md"
           >
             <div className="px-4 pt-2 pb-6 space-y-4 shadow-xl">
               {user && (
-                <div className="py-2 flex items-center justify-between border-b border-slate-200/50 dark:border-slate-700/50">
+                <div className="py-2 flex items-center justify-between border-b border-slate-200/50 dark:border-slate-600">
                   <div className="flex items-center gap-3">
                     <div className="bg-primary/10 rounded-full p-2">
                       <User className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white text-sm">{user.full_name}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 capitalize">{user.role}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-200 capitalize">{user.role}</p>
                     </div>
                   </div>
                 </div>
@@ -351,17 +351,17 @@ const Navbar = () => {
                 )}
               </div>
 
-              <div className="flex items-center justify-between px-4 py-3 border-t border-slate-200/50 dark:border-slate-700/50">
+              <div className="flex items-center justify-between px-4 py-3 border-t border-slate-200/50 dark:border-slate-600">
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Theme</span>
                 <button
                   onClick={toggleTheme}
-                  className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center bg-slate-100 dark:bg-slate-800"
+                  className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center bg-slate-100 dark:bg-slate-800"
                 >
                   <span className="text-lg leading-none">{theme === 'dark' ? '☀️' : '🌙'}</span>
                 </button>
               </div>
 
-              <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/50 dark:border-slate-700/50">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/50 dark:border-slate-600">
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Language</span>
                 <div className="flex gap-2">
                   <button onClick={() => changeLanguage('en')} className={`px-3 py-1 rounded-lg text-xs font-bold ${i18n.language?.startsWith('en') ? 'bg-primary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>EN</button>

@@ -70,7 +70,7 @@ const pagesData = {
  content: 'We take your data seriously. Read our privacy policy to understand how we protect your customer data and restaurant analytics.',
  body: (
  <div className="space-y-6">
- <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-6">Last Updated: July 2026</p>
+ <p className="text-sm font-semibold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-6">Last Updated: July 2026</p>
  <p>At RestaurantBrain AI, we are committed to protecting your privacy and ensuring the security of your data.</p>
  
  <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-4">1. Data Collection</h2>
@@ -89,7 +89,7 @@ const pagesData = {
  content: 'By using RestaurantBrain AI, you agree to our Terms of Service. Review the legal terms and conditions here.',
  body: (
  <div className="space-y-6">
- <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-6">Effective Date: July 26, 2026</p>
+ <p className="text-sm font-semibold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-6">Effective Date: July 26, 2026</p>
  <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-4">1. Acceptance of Terms</h2>
  <p>By accessing and using RestaurantBrain AI, you accept and agree to be bound by the terms and provision of this agreement.</p>
  

@@ -39,7 +39,7 @@ const Contact = () => {
  initial={{ opacity: 0 }}
  animate={{ opacity: 1 }}
  transition={{ delay: 0.1 }}
- className="mt-4 text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
+ className="mt-4 text-xl text-slate-500 dark:text-slate-200 max-w-2xl mx-auto"
  >
  Have questions about RestaurantBrain AI? Our team is here to help you transform your restaurant.
  </motion.p>
@@ -60,7 +60,7 @@ const Contact = () => {
  </div>
  <div>
  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">Email Us</h3>
- <p className="text-slate-500 dark:text-slate-400 mb-2">Our friendly team is here to help.</p>
+ <p className="text-slate-500 dark:text-slate-200 mb-2">Our friendly team is here to help.</p>
  <a href="mailto:sanskardhumal220@gmail.com" className="text-primary font-semibold hover:underline">sanskardhumal220@gmail.com</a>
  </div>
  </div>
@@ -71,7 +71,7 @@ const Contact = () => {
  </div>
  <div>
  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">Call Us</h3>
- <p className="text-slate-500 dark:text-slate-400 mb-2">Mon-Fri from 8am to 5pm.</p>
+ <p className="text-slate-500 dark:text-slate-200 mb-2">Mon-Fri from 8am to 5pm.</p>
  <a href="tel:+917489912345" className="text-primary font-semibold hover:underline">+91 74899 12345</a>
  </div>
  </div>
@@ -82,7 +82,7 @@ const Contact = () => {
  </div>
  <div>
  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">Visit Us</h3>
- <p className="text-slate-500 dark:text-slate-400 mb-2">Come say hello at our HQ.</p>
+ <p className="text-slate-500 dark:text-slate-200 mb-2">Come say hello at our HQ.</p>
  <p className="text-primary font-semibold">Hari Shankarpuram<br/>Gwalior, M.P.</p>
  </div>
  </div>

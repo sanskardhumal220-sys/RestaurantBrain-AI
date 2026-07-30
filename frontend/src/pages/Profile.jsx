@@ -78,7 +78,7 @@ const Profile = () => {
           className="mb-8"
         >
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">My Profile</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">Manage your account settings and preferences</p>
+          <p className="text-slate-500 dark:text-slate-200 mt-1">Manage your account settings and preferences</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -117,12 +117,12 @@ const Profile = () => {
               <p className="text-primary font-medium text-sm mt-1 uppercase tracking-wider">{user.role}</p>
               
               <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700 text-left space-y-3">
-                <div className="flex items-center text-slate-600 dark:text-slate-400 text-sm">
+                <div className="flex items-center text-slate-600 dark:text-slate-200 text-sm">
                   <Mail className="w-4 h-4 mr-3 text-slate-400" />
                   <span className="truncate">{user.email}</span>
                 </div>
                 {user.phone && (
-                  <div className="flex items-center text-slate-600 dark:text-slate-400 text-sm">
+                  <div className="flex items-center text-slate-600 dark:text-slate-200 text-sm">
                     <Phone className="w-4 h-4 mr-3 text-slate-400" />
                     <span>{user.phone}</span>
                   </div>
@@ -154,7 +154,7 @@ const Profile = () => {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
-                        className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                        className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                       />
                     </div>
                   </div>
@@ -170,7 +170,7 @@ const Profile = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                        className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                       />
                     </div>
                   </div>
@@ -191,7 +191,7 @@ const Profile = () => {
                           placeholder="Leave blank to keep"
                           value={formData.currentPassword}
                           onChange={handleChange}
-                          className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                          className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                         />
                       </div>
                     </div>
@@ -208,7 +208,7 @@ const Profile = () => {
                           placeholder="Leave blank to keep"
                           value={formData.newPassword}
                           onChange={handleChange}
-                          className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800/50 outline-none transition-all dark:text-white"
+                          className="block w-full pl-10 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white/50 dark:bg-slate-800 outline-none transition-all dark:text-white"
                         />
                       </div>
                     </div>
