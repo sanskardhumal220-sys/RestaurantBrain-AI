@@ -94,7 +94,7 @@ const Navbar = () => {
               <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary/20 transition-colors">
                 <Utensils className="h-6 w-6 text-primary" />
               </div>
-              <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-white">RestaurantBrain</span>
+              <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-white" style={{ color: theme === 'dark' ? '#ffffff' : undefined }}>RestaurantBrain</span>
             </Link>
           </div>
 
