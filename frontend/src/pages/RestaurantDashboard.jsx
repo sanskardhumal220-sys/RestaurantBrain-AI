@@ -4,6 +4,7 @@ import { Settings, ClipboardList, UtensilsCrossed, CalendarCheck, CheckCircle, X
 import { useTranslation } from 'react-i18next';
 import { AuthContext } from '../context/AuthContext';
 import api from '../services/api';
+import { toast } from 'react-hot-toast';
 import {
  Chart as ChartJS,
  CategoryScale,
@@ -307,7 +308,7 @@ const RestaurantDashboard = () => {
  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('dash.revenue_overview')}</h3>
  <p className="text-sm text-slate-500 dark:text-white">Last 7 days performance</p>
  </div>
- <button className="text-primary text-sm font-bold hover:underline">View Report</button>
+ <button onClick={() => toast('Full reporting module coming soon!', { icon: '📊' })} className="text-primary text-sm font-bold hover:underline">View Report</button>
  </div>
  <div className="h-72 w-full">
  <Line data={revenueChartData} options={chartOptions} />
