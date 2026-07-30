@@ -12,17 +12,25 @@ const Contact = () => {
  const [loading, setLoading] = useState(false);
  const [showToast, setShowToast] = useState(false);
 
- const handleSubmit = (e) => {
- e.preventDefault();
- setLoading(true);
- // Simulate API call
- setTimeout(() => {
- setLoading(false);
- setShowToast(true);
- setFormData({ name: '', email: '', subject: '', message: '' });
- setTimeout(() => setShowToast(false), 5000);
- }, 1500);
- };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    // Construct mailto link
+    const mailtoLink = `mailto:sanskardhumal220@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+
+    setTimeout(() => {
+      setLoading(false);
+      setShowToast(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setShowToast(false), 5000);
+    }, 500);
+  };
 
  return (
  <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors pt-32 px-4 sm:px-6 lg:px-8 pb-24 font-sans">
