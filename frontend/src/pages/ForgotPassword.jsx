@@ -11,14 +11,23 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success'
 
+  const [demoLink, setDemoLink] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
+    setDemoLink(null);
 
     try {
-      await api.post('/api/auth/forgot-password', { email });
+      const response = await api.post('/api/auth/forgot-password', { email });
       setStatus('success');
-      toast.success('Password reset link sent!');
+      
+      if (response.data.reset_link) {
+        setDemoLink(response.data.reset_link);
+        toast.success('Demo Mode: Reset link generated!');
+      } else {
+        toast.success('Password reset link sent to your email!');
+      }
     } catch (err) {
       setStatus('idle');
       toast.error(err.response?.data?.message || 'Failed to process request. Please try again.');
@@ -72,23 +81,43 @@ const ForgotPassword = () => {
               <p className="text-slate-500 dark:text-white mt-2">Enter your email and we'll send a reset link.</p>
             </div>
 
-            {status === 'success' ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center p-6 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-100 dark:border-green-800/50"
-              >
-                <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-green-800 dark:text-green-300 mb-2">Check your email</h3>
-                <p className="text-green-600 dark:text-green-400/80 text-sm">We've sent a password reset link to <br/><span className="font-semibold">{email}</span></p>
-                
-                <div className="mt-6">
-                  <p className="text-sm text-green-700 dark:text-green-300">
-                    Please check your inbox (and spam folder) for a password reset link.
+              {status === 'success' ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center"
+                >
+                  <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
+                    <CheckCircle className="w-8 h-8 text-green-500" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">Check your email</h3>
+                  <p className="text-slate-500 dark:text-slate-400 mb-6">
+                    If an account exists for <span className="font-medium text-slate-700 dark:text-slate-300">{email}</span>, we've sent instructions to reset your password.
                   </p>
-                </div>
-              </motion.div>
-            ) : (
+                  
+                  {demoLink && (
+                    <div className="mt-4 p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl text-left">
+                      <div className="flex items-center text-orange-600 dark:text-orange-400 font-medium mb-2">
+                        <ShieldAlert className="w-5 h-5 mr-2" />
+                        Demo Mode Active
+                      </div>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                        Because you haven't configured a real email server in your .env file, the email was not actually sent. Click this link to continue testing:
+                      </p>
+                      <a 
+                        href={demoLink} 
+                        className="text-primary hover:underline font-medium break-all text-sm"
+                      >
+                        {demoLink}
+                      </a>
+                    </div>
+                  )}
+
+                  <Link to="/login" className="block w-full py-2.5 px-4 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors mt-6">
+                    Return to login
+                  </Link>
+                </motion.div>
+              ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">{t('auth.email') || 'Email Address'}</label>

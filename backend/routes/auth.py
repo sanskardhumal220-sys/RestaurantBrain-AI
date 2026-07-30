@@ -278,7 +278,14 @@ def forgot_password():
         print(reset_link)
         print("="*50 + "\n")
         
-        send_reset_email(email, reset_link)
+        email_sent = send_reset_email(email, reset_link)
+
+    # In Demo Mode (no SMTP), we can return the link to the frontend for easy testing
+    if user and not email_sent:
+        return jsonify({
+            "message": "Demo Mode: Email server not configured. Please use the link below to reset your password.",
+            "reset_link": reset_link
+        }), 200
 
     # We return success regardless to avoid user enumeration
     return jsonify({"message": "If the email is registered, a password reset link has been sent."}), 200
