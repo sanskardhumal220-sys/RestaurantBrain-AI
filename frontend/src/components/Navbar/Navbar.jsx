@@ -206,7 +206,7 @@ const Navbar = () => {
                         transition={{ duration: 0.2 }}
                         className="absolute right-0 mt-2 w-72 glassmorphism dark:glass-dark shadow-xl overflow-hidden z-50 border border-slate-200/50"
                       >
-                        <div className="p-3 border-b border-slate-100 bg-white/50 flex justify-between items-center">
+                        <div className="p-3 border-b border-slate-100 dark:border-slate-700/50 bg-white/50 dark:bg-slate-800/50 flex justify-between items-center">
                           <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-200">{t('nav.notifications')}</h3>
                           {hasUnread && (
                             <span onClick={markAllRead} className="text-xs text-primary font-medium cursor-pointer hover:underline">{t('nav.mark_read')}</span>
@@ -214,12 +214,12 @@ const Navbar = () => {
                         </div>
                         <div className="max-h-[300px] overflow-y-auto">
                           {notifications.length === 0 ? (
-                            <div className="p-4 text-center text-sm text-slate-500">{t('nav.no_notifications')}</div>
+                            <div className="p-4 text-center text-sm text-slate-500 dark:text-slate-400">{t('nav.no_notifications')}</div>
                           ) : (
                             notifications.map(notif => {
                               const isUnread = !readNotifications.includes(notif.id);
                               return (
-                                <div key={notif.id} onClick={() => handleNotificationClick(notif.id)} className={`p-3 border-b border-slate-50 hover:bg-slate-50/50 transition-colors cursor-pointer ${isUnread ? 'bg-primary/5' : ''}`}>
+                                <div key={notif.id} onClick={() => handleNotificationClick(notif.id)} className={`p-3 border-b border-slate-50 dark:border-slate-700/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer ${isUnread ? 'bg-primary/5' : ''}`}>
                                   <p className={`text-sm ${isUnread ? 'font-medium text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-300'}`}>{notif.text}</p>
                                   <p className="text-xs text-slate-400 mt-1">{notif.time}</p>
                                 </div>
@@ -227,7 +227,7 @@ const Navbar = () => {
                             })
                           )}
                         </div>
-                        <div className="p-2 text-center bg-slate-50/50 border-t border-slate-100">
+                        <div className="p-2 text-center bg-slate-50/50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-700/50">
                           <span className="text-xs text-slate-500 hover:text-slate-700 dark:text-slate-300 dark:hover:text-white cursor-pointer">{t('nav.view_all')}</span>
                         </div>
                       </motion.div>
@@ -260,9 +260,9 @@ const Navbar = () => {
                         transition={{ duration: 0.2 }}
                         className="absolute right-0 mt-2 w-48 glassmorphism dark:glass-dark shadow-xl overflow-hidden z-50 border border-slate-200/50"
                       >
-                        <div className="p-3 border-b border-slate-100 bg-white/50">
+                        <div className="p-3 border-b border-slate-100 dark:border-slate-700/50 bg-white/50 dark:bg-slate-800/50">
                           <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">{user.full_name}</p>
-                          <p className="text-xs text-slate-500 capitalize">{user.role}</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 capitalize">{user.role}</p>
                         </div>
                         <div className="p-1">
                           <Link 
