@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from database.config import db
@@ -8,6 +8,10 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 from sqlalchemy import text
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from itsdangerous import URLSafeTimedSerializer
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -213,6 +217,45 @@ def get_notifications():
         
     return jsonify({"notifications": notifications}), 200
 
+def send_reset_email(to_email, reset_link):
+    smtp_server = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
+    smtp_port = int(os.environ.get('SMTP_PORT', 587))
+    smtp_user = os.environ.get('SMTP_USERNAME')
+    smtp_pass = os.environ.get('SMTP_PASSWORD')
+
+    if not smtp_user or not smtp_pass:
+        print("Warning: SMTP credentials not configured. Email not sent.")
+        return False
+
+    msg = MIMEMultipart()
+    msg['From'] = smtp_user
+    msg['To'] = to_email
+    msg['Subject'] = "Password Reset Request"
+
+    body = f"""Hello,
+
+You requested a password reset. Click the link below to reset your password:
+
+{reset_link}
+
+If you didn't request this, you can safely ignore this email.
+
+Thanks,
+RestaurantBrain Team
+"""
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(smtp_user, smtp_pass)
+        server.send_message(msg)
+        server.quit()
+        return True
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+        return False
+
 @auth_bp.route('/forgot-password', methods=['POST'])
 def forgot_password():
     data = request.get_json()
@@ -221,9 +264,48 @@ def forgot_password():
     if not email:
         return jsonify({"message": "Email is required"}), 400
         
-    # In a real app, we would verify the email exists and send a reset link
-    # For now, we mock the success response to avoid giving away user enumeration
+    user = User.query.filter_by(email=email).first()
+    if user:
+        # In a real app, ensure current_app.config['SECRET_KEY'] is a strong secret.
+        s = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
+        token = s.dumps(email, salt='email-reset-salt')
+        
+        frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:5173')
+        reset_link = f"{frontend_url}/reset-password?token={token}&email={email}"
+        
+        send_reset_email(email, reset_link)
+
+    # We return success regardless to avoid user enumeration
     return jsonify({"message": "If the email is registered, a password reset link has been sent."}), 200
+
+@auth_bp.route('/reset-password', methods=['POST'])
+def reset_password():
+    data = request.get_json()
+    token = data.get('token')
+    email = data.get('email')
+    new_password = data.get('password')
+    
+    if not token or not email or not new_password:
+        return jsonify({"message": "Missing required fields"}), 400
+        
+    s = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
+    try:
+        # Token expires in 1 hour (3600 seconds)
+        email_from_token = s.loads(token, salt='email-reset-salt', max_age=3600)
+    except Exception:
+        return jsonify({"message": "The reset link is invalid or has expired."}), 400
+        
+    if email_from_token != email:
+        return jsonify({"message": "Invalid token for this email."}), 400
+        
+    user = User.query.filter_by(email=email).first()
+    if not user:
+        return jsonify({"message": "User not found."}), 404
+        
+    user.password_hash = generate_password_hash(new_password)
+    db.session.commit()
+    
+    return jsonify({"message": "Password successfully reset."}), 200
 
 @auth_bp.route('/google-login', methods=['POST'])
 def google_login():

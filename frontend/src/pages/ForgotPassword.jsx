@@ -83,10 +83,9 @@ const ForgotPassword = () => {
                 <p className="text-green-600 dark:text-green-400/80 text-sm">We've sent a password reset link to <br/><span className="font-semibold">{email}</span></p>
                 
                 <div className="mt-6">
-                  {/* Mock link to Reset Password page for demo purposes */}
-                  <Link to={`/reset-password?token=mock_token_123&email=${email}`} className="text-sm font-medium text-primary hover:underline">
-                    (Demo: Click here to reset password)
-                  </Link>
+                  <p className="text-sm text-green-700 dark:text-green-300">
+                    Please check your inbox (and spam folder) for a password reset link.
+                  </p>
                 </div>
               </motion.div>
             ) : (

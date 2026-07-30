@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Lock, Loader2, CheckCircle, KeyRound, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import api from '../services/api';
 
 const ResetPassword = () => {
   const [searchParams] = useSearchParams();
@@ -27,11 +28,18 @@ const ResetPassword = () => {
 
     setStatus('loading');
 
-    // Simulate API call since we don't have a real reset endpoint yet
-    setTimeout(() => {
+    try {
+      await api.post('/api/auth/reset-password', {
+        token,
+        email,
+        password
+      });
       setStatus('success');
       toast.success('Password successfully reset!');
-    }, 1500);
+    } catch (err) {
+      setStatus('idle');
+      toast.error(err.response?.data?.message || 'Failed to reset password. The link might be invalid or expired.');
+    }
   };
 
   if (!token) {
