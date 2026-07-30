@@ -1,14 +1,12 @@
 import os
-import google.generativeai as genai
+from google import genai
 import json
 
 def get_genai_client():
     api_key = os.environ.get('GEMINI_API_KEY')
     if not api_key:
         return None
-    genai.configure(api_key=api_key)
-    # Using gemini-flash-latest for fast responses
-    return genai.GenerativeModel('gemini-flash-latest')
+    return genai.Client(api_key=api_key)
 
 def generate_smart_insights(context_data, lang='en'):
     model = get_genai_client()
@@ -38,7 +36,10 @@ def generate_smart_insights(context_data, lang='en'):
     """
     
     try:
-        response = model.generate_content(prompt)
+        response = model.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt
+        )
         text = response.text.strip()
         if text.startswith('```json'):
             text = text[7:-3]
@@ -71,7 +72,10 @@ def copilot_chat(user_message, context_data, lang='en'):
     """
     
     try:
-        response = model.generate_content(prompt)
+        response = model.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt
+        )
         return response.text.strip()
     except Exception as e:
         print(f"Gemini API Error: {str(e)}")
@@ -99,7 +103,10 @@ def generate_recommendations(context_data, lang='en'):
     """
     
     try:
-        response = model.generate_content(prompt)
+        response = model.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt
+        )
         text = response.text.strip()
         if text.startswith('```json'): text = text[7:-3]
         if text.startswith('```'): text = text[3:-3]
@@ -124,7 +131,10 @@ def generate_health_explanation(context_data, score, lang='en'):
     Return ONLY the raw text explanation. No markdown.
     """
     try:
-        response = model.generate_content(prompt)
+        response = model.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt
+        )
         return response.text.strip()
     except Exception as e:
         print(f"Gemini API Error: {str(e)}")
@@ -164,7 +174,10 @@ def parse_voice_order(transcript, menu_context):
     """
     
     try:
-        response = model.generate_content(prompt)
+        response = model.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt
+        )
         text = response.text.strip()
         
         # Robustly extract JSON array using regex

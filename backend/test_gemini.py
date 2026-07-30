@@ -1,12 +1,11 @@
 import os
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 import json
 
 load_dotenv()
 api_key = os.environ.get('GEMINI_API_KEY')
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel('gemini-flash-latest')
+client = genai.Client(api_key=api_key)
 
 context_data = {
     "today_date": "2026-07-25",
@@ -38,7 +37,10 @@ Owner's Question: {user_message}
 """
 
 try:
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model='gemini-2.5-flash',
+        contents=prompt
+    )
     print("SUCCESS:")
     print(response.text)
 except Exception as e:
