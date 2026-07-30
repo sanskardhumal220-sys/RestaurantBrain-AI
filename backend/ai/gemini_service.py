@@ -37,7 +37,7 @@ def generate_smart_insights(context_data, lang='en'):
     
     try:
         response = model.models.generate_content(
-            model='gemini-flash-latest',
+            model='gemini-2.5-flash',
             contents=prompt
         )
         text = response.text.strip()
@@ -73,13 +73,13 @@ def copilot_chat(user_message, context_data, lang='en'):
     
     try:
         response = model.models.generate_content(
-            model='gemini-flash-latest',
+            model='gemini-2.5-flash',
             contents=prompt
         )
         return response.text.strip()
     except Exception as e:
         print(f"Gemini API Error: {str(e)}")
-        return f"Sorry, I encountered an error: {str(e)}"
+        return "Sorry, I encountered an error while trying to process your request."
 
 def generate_recommendations(context_data, lang='en'):
     model = get_genai_client()
@@ -104,7 +104,7 @@ def generate_recommendations(context_data, lang='en'):
     
     try:
         response = model.models.generate_content(
-            model='gemini-flash-latest',
+            model='gemini-2.5-flash',
             contents=prompt
         )
         text = response.text.strip()
@@ -113,7 +113,7 @@ def generate_recommendations(context_data, lang='en'):
         return json.loads(text.strip())
     except Exception as e:
         print(f"Gemini API Error: {str(e)}")
-        return [{"title": "Analysis Failed", "description": f"Error: {str(e)}"}]
+        return [{"title": "Analysis Failed", "description": "Could not generate recommendations."}]
 
 def generate_health_explanation(context_data, score, lang='en'):
     model = get_genai_client()
@@ -132,13 +132,13 @@ def generate_health_explanation(context_data, score, lang='en'):
     """
     try:
         response = model.models.generate_content(
-            model='gemini-flash-latest',
+            model='gemini-2.5-flash',
             contents=prompt
         )
         return response.text.strip()
     except Exception as e:
         print(f"Gemini API Error: {str(e)}")
-        return f"Explanation currently unavailable. Error: {str(e)}"
+        return "Explanation currently unavailable."
 
 def parse_voice_order(transcript, menu_context):
     model = get_genai_client()
@@ -175,7 +175,7 @@ def parse_voice_order(transcript, menu_context):
     
     try:
         response = model.models.generate_content(
-            model='gemini-flash-latest',
+            model='gemini-2.5-flash',
             contents=prompt
         )
         text = response.text.strip()
