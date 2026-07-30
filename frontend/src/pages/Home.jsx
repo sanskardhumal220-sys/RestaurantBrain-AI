@@ -247,9 +247,7 @@ const Home = () => {
             <Link to="/login" className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
               {t('home.launch_dashboard')}
             </Link>
-            <Link to="/register" className="w-full sm:w-auto flex justify-center glassmorphism dark:glass-dark text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all hover:scale-105">
-              {t('home.view_demo')}
-            </Link>
+
           </div>
         </motion.div>
       </section>
