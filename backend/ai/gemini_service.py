@@ -192,5 +192,5 @@ def parse_voice_order(transcript, menu_context):
         parsed_items = json.loads(text)
         return parsed_items
     except Exception as e:
-        print(f"Gemini API Error during voice parsing: {str(e)}")
-        return []
+        print(f"Gemini API Error during voice parsing: {str(e)}\nRaw Text: {text if 'text' in locals() else 'None'}")
+        return {"error": f"Failed to parse order: {str(e)}"}

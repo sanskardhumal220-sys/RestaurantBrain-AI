@@ -98,14 +98,24 @@ with app.app_context():
     
     # Initialize default categories if none exist
     if Category.query.count() == 0:
-        default_categories = [
-            Category(name="Fast Food", description="Quick bites and fast food"),
-            Category(name="Main Course", description="Hearty and filling main dishes"),
-            Category(name="Beverages", description="Refreshing drinks and beverages")
-        ]
-        db.session.add_all(default_categories)
+        c1 = Category(name="Fast Food", description="Quick bites and fast food")
+        c2 = Category(name="Main Course", description="Hearty and filling main dishes")
+        c3 = Category(name="Beverages", description="Refreshing drinks and beverages")
+        db.session.add_all([c1, c2, c3])
         db.session.commit()
         print("Initialized default categories")
+        
+        # Initialize default menu items
+        from models.restaurant import MenuItem
+        if MenuItem.query.count() == 0:
+            m1 = MenuItem(name="Classic Burger", description="Beef patty with cheese", price=12.99, is_veg=False, category_id=c1.id)
+            m2 = MenuItem(name="Pizza", description="Margherita pizza", price=14.99, is_veg=True, category_id=c1.id)
+            m3 = MenuItem(name="French Fries", description="Crispy potato fries", price=4.99, is_veg=True, category_id=c1.id)
+            m4 = MenuItem(name="Coca Cola", description="Chilled soda", price=2.99, is_veg=True, category_id=c3.id)
+            m5 = MenuItem(name="Steak", description="Grilled ribeye steak", price=24.99, is_veg=False, category_id=c2.id)
+            db.session.add_all([m1, m2, m3, m4, m5])
+            db.session.commit()
+            print("Initialized default menu items")
 
 @app.route('/')
 def index():
