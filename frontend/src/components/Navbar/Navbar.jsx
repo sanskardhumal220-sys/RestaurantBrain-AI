@@ -91,8 +91,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-12">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary/20 transition-colors">
-                <Utensils className="h-6 w-6 text-primary" />
+              <div className="bg-primary/10 dark:bg-primary/20 p-2 rounded-xl group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-colors">
+                <Utensils className="h-6 w-6 text-primary dark:text-emerald-400" />
               </div>
               <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-white" style={{ color: theme === 'dark' ? '#ffffff' : undefined }}>RestaurantBrain</span>
             </Link>
