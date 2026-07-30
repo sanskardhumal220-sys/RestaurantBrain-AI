@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { User, Phone, Lock, Save, Camera, Loader2, Mail } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
@@ -18,6 +18,18 @@ const Profile = () => {
   });
   
   const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, profilePicture: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   useEffect(() => {
     if (user) {
@@ -80,10 +92,24 @@ const Profile = () => {
           >
             <div className="glassmorphism dark:glass-dark p-6 text-center shadow-lg">
               <div className="relative inline-block mb-4">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary to-emerald-400 flex items-center justify-center text-4xl font-bold text-white shadow-inner mx-auto">
-                  {user.full_name?.charAt(0).toUpperCase()}
+                <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary to-emerald-400 flex items-center justify-center text-4xl font-bold text-white shadow-inner mx-auto overflow-hidden">
+                  {(formData.profilePicture || user.profile_picture) ? (
+                    <img src={formData.profilePicture || user.profile_picture} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    user.full_name?.charAt(0).toUpperCase()
+                  )}
                 </div>
-                <button className="absolute bottom-0 right-0 p-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-full shadow-md border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                <input 
+                  type="file" 
+                  ref={fileInputRef} 
+                  onChange={handleFileChange} 
+                  accept="image/*" 
+                  className="hidden" 
+                />
+                <button 
+                  onClick={() => fileInputRef.current?.click()}
+                  className="absolute bottom-0 right-0 p-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-full shadow-md border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                >
                   <Camera className="w-5 h-5" />
                 </button>
               </div>

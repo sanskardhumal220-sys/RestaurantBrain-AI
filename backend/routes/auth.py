@@ -377,6 +377,8 @@ def update_profile():
         user.full_name = data['fullName']
     if 'phone' in data:
         user.phone = data['phone']
+    if 'profilePicture' in data and data['profilePicture']:
+        user.profile_picture = data['profilePicture']
         
     if 'currentPassword' in data and data['currentPassword'] and 'newPassword' in data and data['newPassword']:
         if not check_password_hash(user.password_hash, data['currentPassword']):
