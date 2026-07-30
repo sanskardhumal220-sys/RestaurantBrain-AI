@@ -73,9 +73,7 @@ const Home = () => {
             <span className="relative z-10">{t('home.get_started')}</span> 
             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
           </Link>
-          <Link to="#features" className="w-full sm:w-auto flex items-center justify-center gap-2 glassmorphism dark:glass-dark text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all hover:scale-105 border border-slate-200/50 dark:border-slate-700/50">
-            {t('home.explore_features')}
-          </Link>
+
         </motion.div>
       </section>
 
