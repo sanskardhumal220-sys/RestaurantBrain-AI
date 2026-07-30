@@ -230,7 +230,7 @@ const RestaurantDashboard = () => {
  <div className="glassmorphism dark:glass-dark p-6 sticky top-28 rounded-3xl space-y-8 bg-white/60 dark:bg-transparent transition-colors shadow-sm border border-slate-200 dark:border-slate-700">
  <div>
  <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{t('dash.admin')}</h2>
- <p className="text-sm text-slate-500 dark:text-slate-200 mt-1">{t('dash.restaurant_management')}</p>
+ <p className="text-sm text-slate-500 dark:text-white mt-1">{t('dash.restaurant_management')}</p>
  </div>
  
  <nav className="flex flex-row overflow-x-auto hide-scrollbar lg:flex-col gap-2 lg:gap-0 lg:space-y-2 pb-2 lg:pb-0 w-full">
@@ -238,7 +238,7 @@ const RestaurantDashboard = () => {
  <button 
  key={tab.id}
  onClick={() => setActiveTab(tab.id)} 
- className={`w-auto lg:w-full shrink-0 text-left px-4 lg:px-5 py-3 lg:py-4 rounded-2xl transition-all duration-300 flex items-center gap-3 lg:gap-4 group relative overflow-hidden ${activeTab === tab.id ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 hover:text-slate-900 dark:text-white'}`}
+ className={`w-auto lg:w-full shrink-0 text-left px-4 lg:px-5 py-3 lg:py-4 rounded-2xl transition-all duration-300 flex items-center gap-3 lg:gap-4 group relative overflow-hidden ${activeTab === tab.id ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-slate-600 dark:text-white hover:bg-slate-100 hover:text-slate-900 dark:text-white'}`}
  >
  {activeTab === tab.id && (
  <motion.div layoutId="admin-active-tab" className="absolute inset-0 bg-primary z-0" />
@@ -251,12 +251,12 @@ const RestaurantDashboard = () => {
  
  <div className="pt-6 border-t border-slate-200 dark:border-slate-700 mt-8">
  <div className="flex items-center gap-3">
- <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold border-2 border-white dark:border-white/10 shadow-sm">
+ <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 dark:text-white font-bold border-2 border-white dark:border-white/10 shadow-sm">
  {user?.full_name?.charAt(0) || 'A'}
  </div>
  <div>
  <p className="font-bold text-sm text-slate-900 dark:text-white">{user?.full_name}</p>
- <p className="text-xs text-slate-500 dark:text-slate-200 capitalize">{user?.role}</p>
+ <p className="text-xs text-slate-500 dark:text-white capitalize">{user?.role}</p>
  </div>
  </div>
  </div>
@@ -292,7 +292,7 @@ const RestaurantDashboard = () => {
  {kpi.trend}
  </span>
  </div>
- <h4 className="text-slate-600 dark:text-slate-300 text-sm font-semibold mb-1">{kpi.title}</h4>
+ <h4 className="text-slate-600 dark:text-white text-sm font-semibold mb-1">{kpi.title}</h4>
  <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{kpi.value}</h2>
  </motion.div>
  ))}
@@ -305,7 +305,7 @@ const RestaurantDashboard = () => {
  <div className="flex justify-between items-center mb-6">
  <div>
  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('dash.revenue_overview')}</h3>
- <p className="text-sm text-slate-500 dark:text-slate-200">Last 7 days performance</p>
+ <p className="text-sm text-slate-500 dark:text-white">Last 7 days performance</p>
  </div>
  <button className="text-primary text-sm font-bold hover:underline">View Report</button>
  </div>
@@ -326,7 +326,7 @@ const RestaurantDashboard = () => {
  </div>
  <div>
  <p className="text-sm font-bold text-slate-800 dark:text-slate-100">New Order #{o.id}</p>
- <p className="text-xs text-slate-500 dark:text-slate-200 mt-1">{o.customer_name} • ${o.total_amount.toFixed(2)}</p>
+ <p className="text-xs text-slate-500 dark:text-white mt-1">{o.customer_name} • ${o.total_amount.toFixed(2)}</p>
  <span className="text-[10px] font-semibold text-slate-400 mt-1 block">{new Date(o.created_at).toLocaleTimeString()}</span>
  </div>
  </div>
@@ -342,7 +342,7 @@ const RestaurantDashboard = () => {
  <motion.div key="orders" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
  <div className="glassmorphism dark:glass-dark p-8 rounded-3xl bg-white/60 dark:bg-transparent transition-colors mb-6 border border-white/50 dark:border-white/10">
  <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Active Orders</h2>
- <p className="text-slate-500 dark:text-slate-200">Manage and update customer orders in real-time.</p>
+ <p className="text-slate-500 dark:text-white">Manage and update customer orders in real-time.</p>
  </div>
  
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -369,7 +369,7 @@ const RestaurantDashboard = () => {
  <div className="flex flex-col gap-2 items-end">
  <div className="relative group">
  <select 
- className="text-sm border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-900 transition-colors font-medium text-slate-700 dark:text-slate-200 outline-none appearance-none pr-8 cursor-pointer hover:bg-slate-100 transition-colors"
+ className="text-sm border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-900 transition-colors font-medium text-slate-700 dark:text-white outline-none appearance-none pr-8 cursor-pointer hover:bg-slate-100 transition-colors"
  value={statusUpdates[order.id] || order.status}
  onChange={(e) => setStatusUpdates({...statusUpdates, [order.id]: e.target.value})}
  >
@@ -397,16 +397,16 @@ const RestaurantDashboard = () => {
  {order.items.map(item => (
  <div key={item.id} className="flex justify-between text-sm">
  <div className="flex gap-3 items-center">
- <span className="w-6 h-6 bg-white dark:bg-transparent transition-colors rounded flex items-center justify-center font-bold text-slate-700 dark:text-slate-200 shadow-sm border border-slate-100 dark:border-slate-700">{item.quantity}</span>
+ <span className="w-6 h-6 bg-white dark:bg-transparent transition-colors rounded flex items-center justify-center font-bold text-slate-700 dark:text-white shadow-sm border border-slate-100 dark:border-slate-700">{item.quantity}</span>
  <span className="text-slate-800 dark:text-slate-100 font-medium">{item.menu_item_name}</span>
  </div>
- <span className="text-slate-600 dark:text-slate-300 font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
+ <span className="text-slate-600 dark:text-white font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
  </div>
  ))}
  </div>
 
  <div className="flex justify-between items-center mt-auto px-2">
- <span className="font-bold text-slate-500 dark:text-slate-200 text-sm uppercase tracking-wider">Total</span>
+ <span className="font-bold text-slate-500 dark:text-white text-sm uppercase tracking-wider">Total</span>
  <span className="font-extrabold text-2xl text-slate-900 dark:text-white">${order.total_amount.toFixed(2)}</span>
  </div>
  </div>
@@ -420,7 +420,7 @@ const RestaurantDashboard = () => {
  <motion.div key="reservations" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
  <div className="glassmorphism dark:glass-dark p-8 rounded-3xl bg-white/60 dark:bg-transparent transition-colors mb-6 border border-white/50 dark:border-white/10">
  <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Reservations</h2>
- <p className="text-slate-500 dark:text-slate-200">Approve or reject customer table bookings.</p>
+ <p className="text-slate-500 dark:text-white">Approve or reject customer table bookings.</p>
  </div>
  
  <div className="grid gap-4 md:grid-cols-2">
@@ -429,7 +429,7 @@ const RestaurantDashboard = () => {
  <div>
  <div className="flex justify-between items-start mb-4">
  <div className="flex items-center gap-3">
- <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 dark:text-slate-300">
+ <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 dark:text-white">
  <CalendarCheck className="w-5 h-5" />
  </div>
  <div>
@@ -499,21 +499,21 @@ const RestaurantDashboard = () => {
  <form onSubmit={handleAddItem} className="space-y-5">
  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Item Name</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Item Name</label>
  <input type="text" required placeholder="e.g. Truffle Fries" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all" value={newItem.name} onChange={e => setNewItem({...newItem, name: e.target.value})} />
  </div>
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Price (₹)</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Price (₹)</label>
  <input type="number" step="0.01" required placeholder="0.00" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all" value={newItem.price} onChange={e => setNewItem({...newItem, price: e.target.value})} />
  </div>
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Category</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Category</label>
  <select required className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all cursor-pointer" value={newItem.category_id} onChange={e => setNewItem({...newItem, category_id: e.target.value})}>
  {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
  </select>
  </div>
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Type</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Type</label>
  <select required className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all cursor-pointer" value={newItem.is_veg} onChange={e => setNewItem({...newItem, is_veg: e.target.value === 'true'})}>
  <option value="true">Vegetarian</option>
  <option value="false">Non-Vegetarian</option>
@@ -521,11 +521,11 @@ const RestaurantDashboard = () => {
  </div>
  </div>
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Image URL</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Image URL</label>
  <input type="text" placeholder="https://example.com/image.jpg" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all" value={newItem.image_url} onChange={e => setNewItem({...newItem, image_url: e.target.value})} />
  </div>
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Description</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Description</label>
  <textarea placeholder="Write a mouth-watering description..." rows="3" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none" value={newItem.description} onChange={e => setNewItem({...newItem, description: e.target.value})} />
  </div>
  <div className="pt-2 border-t border-slate-100 dark:border-slate-700 flex justify-end">
@@ -541,17 +541,17 @@ const RestaurantDashboard = () => {
  <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white"><Settings className="w-5 h-5 bg-blue-100 text-blue-600 rounded-full p-0.5" /> Add Category</h3>
  <form onSubmit={handleAddCategory} className="space-y-5">
  <div>
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Category Name</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Category Name</label>
  <input type="text" required placeholder="e.g. Beverages" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-blue-500/20 outline-none transition-all" value={newCategory.name} onChange={e => setNewCategory({name: e.target.value})} />
  </div>
  <button type="submit" className="w-full bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl hover:bg-blue-700 transition-all">Add Category</button>
  </form>
  
  <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
- <h4 className="text-sm font-bold text-slate-700 dark:text-slate-200 mb-4">Existing Categories</h4>
+ <h4 className="text-sm font-bold text-slate-700 dark:text-white mb-4">Existing Categories</h4>
  <div className="flex flex-wrap gap-2">
  {categories.map(c => (
- <span key={c.id} className="bg-white dark:bg-transparent transition-colors border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 shadow-sm">{c.name}</span>
+ <span key={c.id} className="bg-white dark:bg-transparent transition-colors border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-white shadow-sm">{c.name}</span>
  ))}
  </div>
  </div>
@@ -562,17 +562,17 @@ const RestaurantDashboard = () => {
  <div className="glassmorphism dark:glass-dark rounded-3xl bg-white/70 dark:bg-transparent transition-colors border border-white/50 dark:border-white/10 overflow-hidden shadow-sm">
  <div className="p-6 border-b border-slate-100 dark:border-slate-700 bg-white/50 dark:bg-transparent transition-colors flex justify-between items-center">
  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Current Menu</h3>
- <span className="bg-slate-100 text-slate-600 dark:text-slate-300 px-3 py-1 text-sm font-bold rounded-lg">{menuItems.length} Items</span>
+ <span className="bg-slate-100 text-slate-600 dark:text-white px-3 py-1 text-sm font-bold rounded-lg">{menuItems.length} Items</span>
  </div>
  <div className="overflow-x-auto">
  <table className="w-full text-left border-collapse">
  <thead>
  <tr className="bg-slate-50/50 dark:bg-slate-900/50 transition-colors">
- <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider">Item Details</th>
- <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider">Category</th>
- <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider">Price</th>
- <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider">Status</th>
- <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider text-right">Actions</th>
+ <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider">Item Details</th>
+ <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider">Category</th>
+ <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider">Price</th>
+ <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider">Status</th>
+ <th className="py-4 px-6 text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider text-right">Actions</th>
  </tr>
  </thead>
  <tbody className="divide-y divide-slate-100">
@@ -588,11 +588,11 @@ const RestaurantDashboard = () => {
  {item.name} 
  {item.is_veg ? <span className="w-2 h-2 rounded-full bg-green-500"></span> : <span className="w-2 h-2 rounded-full bg-red-500"></span>}
  </p>
- <p className="text-xs text-slate-500 dark:text-slate-200 truncate w-48">{item.description}</p>
+ <p className="text-xs text-slate-500 dark:text-white truncate w-48">{item.description}</p>
  </div>
  </div>
  </td>
- <td className="py-4 px-6 text-slate-600 dark:text-slate-300 font-medium"><span className="bg-slate-100 px-2 py-1 rounded-md text-xs">{item.category_name}</span></td>
+ <td className="py-4 px-6 text-slate-600 dark:text-white font-medium"><span className="bg-slate-100 px-2 py-1 rounded-md text-xs">{item.category_name}</span></td>
  <td className="py-4 px-6 font-bold text-slate-900 dark:text-white">${item.price.toFixed(2)}</td>
  <td className="py-4 px-6">
  <select 
@@ -631,11 +631,11 @@ const RestaurantDashboard = () => {
  <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white"><Plus className="w-5 h-5 bg-slate-900 text-white rounded-full p-0.5" /> Add New Table</h3>
  <form onSubmit={handleAddTable} className="flex flex-col sm:flex-row gap-4 items-start sm:items-end w-full">
  <div className="flex-1">
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Table Identifier</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Table Identifier</label>
  <input type="text" required placeholder="e.g. T1 or Patio-1" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-slate-900/20 outline-none" value={newTable.table_number} onChange={e => setNewTable({...newTable, table_number: e.target.value})} />
  </div>
  <div className="w-full sm:w-32">
- <label className="block text-xs font-bold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-2">Seats</label>
+ <label className="block text-xs font-bold text-slate-500 dark:text-white uppercase tracking-wider mb-2">Seats</label>
  <input type="number" required placeholder="e.g. 4" min="1" className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-transparent transition-colors focus:ring-2 focus:ring-slate-900/20 outline-none" value={newTable.capacity} onChange={e => setNewTable({...newTable, capacity: e.target.value})} />
  </div>
  <button type="submit" className="w-full sm:w-auto bg-slate-900 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:shadow-xl hover:bg-slate-800 transition-all">Add Table</button>
@@ -656,7 +656,7 @@ const RestaurantDashboard = () => {
  <span className="text-2xl font-extrabold">{table.table_number}</span>
  </div>
  
- <div className="flex items-center gap-2 text-slate-500 dark:text-slate-200 font-medium mb-3 bg-slate-50 dark:bg-slate-900 transition-colors px-3 py-1 rounded-lg text-sm">
+ <div className="flex items-center gap-2 text-slate-500 dark:text-white font-medium mb-3 bg-slate-50 dark:bg-slate-900 transition-colors px-3 py-1 rounded-lg text-sm">
  <Users className="w-4 h-4" /> {table.capacity} Seats
  </div>
  

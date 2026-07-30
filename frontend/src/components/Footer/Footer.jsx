@@ -58,19 +58,19 @@ const Footer = () => {
                 </div>
               </Link>
               
-              <p className="text-slate-600 dark:text-slate-300 font-semibold text-lg">
+              <p className="text-slate-600 dark:text-white font-semibold text-lg">
                 AI-Powered Smart Restaurant Operating System
               </p>
 
               <div className="pt-4 space-y-3">
-                <p className="text-sm font-medium text-slate-500 dark:text-slate-200">
+                <p className="text-sm font-medium text-slate-500 dark:text-white">
                   Developed for modern restaurant management using:
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {['React', 'Flask', 'Tailwind CSS', 'Gemini AI', 'MySQL', 'JWT Authentication'].map(tech => (
                     <span 
                       key={tech}
-                      className="px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 shadow-sm"
+                      className="px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-white shadow-sm"
                     >
                       {tech}
                     </span>
@@ -86,22 +86,22 @@ const Footer = () => {
             >
               <h4 className="font-extrabold text-slate-900 dark:text-white mb-6">Quick Links</h4>
               <ul className="space-y-4">
-                <li><Link to="/" onClick={scrollToTop} className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">Home</Link></li>
-                <li><Link to="/contact" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">Contact</Link></li>
-                <li><Link to="/about" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">About Us</Link></li>
-                <li><Link to="/features" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">Features</Link></li>
+                <li><Link to="/" onClick={scrollToTop} className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">Home</Link></li>
+                <li><Link to="/contact" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">Contact</Link></li>
+                <li><Link to="/about" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">About Us</Link></li>
+                <li><Link to="/features" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">Features</Link></li>
                 
                 {/* Role based links */}
                 {user?.role === 'Customer' && (
-                  <li><Link to="/customer" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Customer Dashboard</Link></li>
+                  <li><Link to="/customer" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Customer Dashboard</Link></li>
                 )}
                 {user?.role === 'Staff' && (
-                  <li><Link to="/staff" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Staff Dashboard</Link></li>
+                  <li><Link to="/staff" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Staff Dashboard</Link></li>
                 )}
                 {user?.role === 'Restaurant Owner' && (
                   <>
-                    <li><Link to="/restaurant" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Admin Dashboard</Link></li>
-                    <li><Link to="/ai" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> AI Copilot</Link></li>
+                    <li><Link to="/restaurant" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Admin Dashboard</Link></li>
+                    <li><Link to="/ai" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> AI Copilot</Link></li>
                   </>
                 )}
               </ul>
@@ -114,10 +114,10 @@ const Footer = () => {
             >
               <h4 className="font-extrabold text-slate-900 dark:text-white mb-6">Resources</h4>
               <ul className="space-y-4">
-                <li><Link to="/docs" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">Documentation</Link></li>
-                <li><Link to="/faq" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">FAQ</Link></li>
-                <li><Link to="/privacy" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="text-slate-500 dark:text-slate-200 hover:text-primary font-medium transition-colors">Terms of Service</Link></li>
+                <li><Link to="/docs" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">Documentation</Link></li>
+                <li><Link to="/faq" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">FAQ</Link></li>
+                <li><Link to="/privacy" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-slate-500 dark:text-white hover:text-primary font-medium transition-colors">Terms of Service</Link></li>
               </ul>
             </motion.div>
 
@@ -127,7 +127,7 @@ const Footer = () => {
 
             
             <div className="text-center md:text-right">
-              <p className="text-slate-500 dark:text-slate-200 text-sm font-medium">
+              <p className="text-slate-500 dark:text-white text-sm font-medium">
                 © {new Date().getFullYear()} RestaurantBrain AI. All rights reserved.
               </p>
             </div>

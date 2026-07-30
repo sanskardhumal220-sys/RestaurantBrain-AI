@@ -53,7 +53,7 @@ const ForgotPassword = () => {
           
           <div className="relative z-10">
             <div className="mb-6">
-              <Link to="/login" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-200 dark:hover:text-slate-200 transition-colors">
+              <Link to="/login" className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-white dark:hover:text-slate-200 transition-colors">
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to login
               </Link>
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
                 <ShieldAlert className="h-8 w-8 text-orange-500" />
               </motion.div>
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Forgot Password</h2>
-              <p className="text-slate-500 dark:text-slate-200 mt-2">Enter your email and we'll send a reset link.</p>
+              <p className="text-slate-500 dark:text-white mt-2">Enter your email and we'll send a reset link.</p>
             </div>
 
             {status === 'success' ? (
@@ -92,7 +92,7 @@ const ForgotPassword = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">{t('auth.email') || 'Email Address'}</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">{t('auth.email') || 'Email Address'}</label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-orange-500 transition-colors">
                       <Mail className="h-5 w-5" />

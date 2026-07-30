@@ -30,7 +30,7 @@ const About = () => {
  <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Mission</span>
  </motion.h1>
- <motion.p variants={fadeIn} className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-10">
+ <motion.p variants={fadeIn} className="text-xl text-slate-600 dark:text-white leading-relaxed mb-10">
  At RestaurantBrain AI, we believe in empowering restaurateurs with cutting-edge artificial intelligence to streamline operations, enhance customer experiences, and drive unprecedented growth.
  </motion.p>
  </motion.div>
@@ -57,7 +57,7 @@ const About = () => {
  {value.icon}
  </div>
  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">{value.title}</h3>
- <p className="text-slate-600 dark:text-slate-300">{value.desc}</p>
+ <p className="text-slate-600 dark:text-white">{value.desc}</p>
  </motion.div>
  ))}
  </div>
@@ -68,10 +68,10 @@ const About = () => {
  <div className="glassmorphism dark:glass-dark bg-white/80 dark:bg-transparent transition-colors rounded-[3rem] p-8 md:p-16 border border-white/50 dark:border-white/10 shadow-2xl flex flex-col md:flex-row gap-12 items-center">
  <div className="flex-1 space-y-6">
  <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white">The Story Behind <br/>RestaurantBrain</h2>
- <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+ <p className="text-lg text-slate-600 dark:text-white leading-relaxed">
  Born from a hackathon and a passion for technology, RestaurantBrain AI was created to bridge the gap between traditional hospitality and modern technological advancements. We saw restaurant owners struggling with fragmented systems, unpredictable demand, and manual operations.
  </p>
- <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+ <p className="text-lg text-slate-600 dark:text-white leading-relaxed">
  Our intelligent operating system acts as the "brain" of the restaurant, seamlessly connecting front-of-house service with back-of-house efficiency.
  </p>
  <Link to="/contact" className="inline-flex items-center gap-2 text-primary font-bold text-lg hover:gap-3 transition-all mt-4">
@@ -90,7 +90,7 @@ const About = () => {
  className="absolute -bottom-6 -left-6 glassmorphism dark:glass-dark bg-white/90 dark:bg-transparent transition-colors p-4 rounded-2xl shadow-xl border border-white dark:border-white/10 flex items-center gap-4 hidden sm:flex"
  >
  <div className="bg-green-100 p-3 rounded-full text-green-600 font-bold text-xl">10x</div>
- <div className="text-sm font-medium text-slate-700 dark:text-slate-200">Faster Operations<br/><span className="text-slate-400">with AI Copilot</span></div>
+ <div className="text-sm font-medium text-slate-700 dark:text-white">Faster Operations<br/><span className="text-slate-400">with AI Copilot</span></div>
  </motion.div>
  </div>
  </div>

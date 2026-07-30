@@ -150,7 +150,7 @@ const Login = () => {
                 >
                   <div className="text-center mb-6">
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Complete Profile</h2>
-                    <p className="text-slate-500 dark:text-slate-200 mt-2">Almost there! Please select your role.</p>
+                    <p className="text-slate-500 dark:text-white mt-2">Almost there! Please select your role.</p>
                   </div>
                   
                   <div className="space-y-3 mb-6">
@@ -168,8 +168,8 @@ const Login = () => {
                           {role.icon}
                         </div>
                         <div>
-                          <h4 className={`font-semibold ${selectedRole === role.id ? 'text-primary' : 'text-slate-800 dark:text-slate-200'}`}>{role.title}</h4>
-                          <p className="text-sm text-slate-500 dark:text-slate-200 mt-1">{role.desc}</p>
+                          <h4 className={`font-semibold ${selectedRole === role.id ? 'text-primary' : 'text-slate-800 dark:text-white'}`}>{role.title}</h4>
+                          <p className="text-sm text-slate-500 dark:text-white mt-1">{role.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -204,12 +204,12 @@ const Login = () => {
                     <Utensils className="h-8 w-8 text-primary" />
                   </motion.div>
                   <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Welcome Back</h2>
-                  <p className="text-slate-500 dark:text-slate-200 mt-2">Sign in to your RestaurantBrain account</p>
+                  <p className="text-slate-500 dark:text-white mt-2">Sign in to your RestaurantBrain account</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">{t('auth.email')}</label>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">{t('auth.email')}</label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-colors group-focus-within:text-primary text-slate-400">
                         <Mail className="h-5 w-5" />
@@ -226,7 +226,7 @@ const Login = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">{t('auth.password')}</label>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">{t('auth.password')}</label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-colors group-focus-within:text-primary text-slate-400">
                         <Lock className="h-5 w-5" />
@@ -258,7 +258,7 @@ const Login = () => {
                         checked={rememberMe}
                         onChange={(e) => setRememberMe(e.target.checked)}
                       />
-                      <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-600 dark:text-slate-200 cursor-pointer">
+                      <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-600 dark:text-white cursor-pointer">
                         {t('auth.remember')}
                       </label>
                     </div>
@@ -285,13 +285,13 @@ const Login = () => {
                         <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
                       </div>
                       <div className="relative flex justify-center text-sm">
-                        <span className="px-4 bg-transparent text-slate-500 dark:text-slate-200 relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
+                        <span className="px-4 bg-transparent text-slate-500 dark:text-white relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
                       </div>
                     </div>
                     
                     <div className="mt-6 flex justify-center w-full">
                       {googleLoading ? (
-                        <div className="w-full flex justify-center items-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur text-sm font-medium text-slate-700 dark:text-slate-200">
+                        <div className="w-full flex justify-center items-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur text-sm font-medium text-slate-700 dark:text-white">
                           <Loader2 className="animate-spin h-5 w-5 mr-2" />
                           Authenticating...
                         </div>
@@ -312,7 +312,7 @@ const Login = () => {
                   
                 </form>
                 
-                <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-200">
+                <div className="mt-8 text-center text-sm text-slate-600 dark:text-white">
                   {t('auth.dont_have_account')}{' '}
                   <Link to="/register" className="font-medium text-primary hover:text-primary-dark transition-colors">
                     {t('auth.sign_up_link')}

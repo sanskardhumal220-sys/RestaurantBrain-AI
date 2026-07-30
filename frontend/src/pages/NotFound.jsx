@@ -34,14 +34,14 @@ const NotFound = () => {
  Looks like this table is empty!
  </h2>
  
- <p className="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-md mx-auto leading-relaxed">
+ <p className="text-lg text-slate-600 dark:text-white mb-10 max-w-md mx-auto leading-relaxed">
  The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let's get you back to the main menu.
  </p>
 
  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
  <button 
  onClick={() => window.history.back()}
- className="flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-transparent transition-colors border-2 border-slate-200 dark:border-slate-700 hover:border-slate-300 hover:bg-slate-50 dark:bg-slate-900 transition-colors transition-all shadow-sm"
+ className="flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-slate-700 dark:text-white bg-white dark:bg-transparent transition-colors border-2 border-slate-200 dark:border-slate-700 hover:border-slate-300 hover:bg-slate-50 dark:bg-slate-900 transition-colors transition-all shadow-sm"
  >
  <ArrowLeft className="w-5 h-5" /> Go Back
  </button>

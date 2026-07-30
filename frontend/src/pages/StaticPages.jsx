@@ -52,15 +52,15 @@ const pagesData = {
  <div className="space-y-8 mt-8">
  <div>
  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Do I need special hardware to run RestaurantBrain?</h3>
- <p className="text-slate-600 dark:text-slate-300">No! RestaurantBrain AI is a cloud-based web application. It runs smoothly on any standard tablet, laptop, or smartphone with a modern web browser.</p>
+ <p className="text-slate-600 dark:text-white">No! RestaurantBrain AI is a cloud-based web application. It runs smoothly on any standard tablet, laptop, or smartphone with a modern web browser.</p>
  </div>
  <div>
  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">How accurate is the AI Health Score?</h3>
- <p className="text-slate-600 dark:text-slate-300">Our AI Health Score analyzes dozens of metrics including table turnover rate, order fulfillment times, and revenue trends to provide a highly accurate, real-time snapshot of your restaurant's operational efficiency.</p>
+ <p className="text-slate-600 dark:text-white">Our AI Health Score analyzes dozens of metrics including table turnover rate, order fulfillment times, and revenue trends to provide a highly accurate, real-time snapshot of your restaurant's operational efficiency.</p>
  </div>
  <div>
  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Can I manage multiple restaurant locations?</h3>
- <p className="text-slate-600 dark:text-slate-300">Yes, enterprise accounts support multi-location management from a centralized admin dashboard.</p>
+ <p className="text-slate-600 dark:text-white">Yes, enterprise accounts support multi-location management from a centralized admin dashboard.</p>
  </div>
  </div>
  )
@@ -70,7 +70,7 @@ const pagesData = {
  content: 'We take your data seriously. Read our privacy policy to understand how we protect your customer data and restaurant analytics.',
  body: (
  <div className="space-y-6">
- <p className="text-sm font-semibold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-6">Last Updated: July 2026</p>
+ <p className="text-sm font-semibold text-slate-500 dark:text-white uppercase tracking-wider mb-6">Last Updated: July 2026</p>
  <p>At RestaurantBrain AI, we are committed to protecting your privacy and ensuring the security of your data.</p>
  
  <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-4">1. Data Collection</h2>
@@ -89,7 +89,7 @@ const pagesData = {
  content: 'By using RestaurantBrain AI, you agree to our Terms of Service. Review the legal terms and conditions here.',
  body: (
  <div className="space-y-6">
- <p className="text-sm font-semibold text-slate-500 dark:text-slate-200 uppercase tracking-wider mb-6">Effective Date: July 26, 2026</p>
+ <p className="text-sm font-semibold text-slate-500 dark:text-white uppercase tracking-wider mb-6">Effective Date: July 26, 2026</p>
  <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-4">1. Acceptance of Terms</h2>
  <p>By accessing and using RestaurantBrain AI, you accept and agree to be bound by the terms and provision of this agreement.</p>
  
@@ -110,13 +110,13 @@ const pagesData = {
  <div className="bg-white dark:bg-transparent transition-colors p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
  <Mail className="w-8 h-8 text-primary mb-4" />
  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Email Support</h3>
- <p className="text-slate-600 dark:text-slate-300 mb-4">Send us an email anytime. We typically respond within 2 hours.</p>
+ <p className="text-slate-600 dark:text-white mb-4">Send us an email anytime. We typically respond within 2 hours.</p>
  <a href="mailto:sanskardhumal220@gmail.com" className="text-primary font-bold hover:underline">sanskardhumal220@gmail.com</a>
  </div>
  <div className="bg-white dark:bg-transparent transition-colors p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
  <Phone className="w-8 h-8 text-primary mb-4" />
  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Phone Support</h3>
- <p className="text-slate-600 dark:text-slate-300 mb-4">Call our dedicated support line for urgent operational issues.</p>
+ <p className="text-slate-600 dark:text-white mb-4">Call our dedicated support line for urgent operational issues.</p>
  <p className="text-primary font-bold">+91 74899 12345</p>
  </div>
  </div>
@@ -124,7 +124,7 @@ const pagesData = {
  <div className="bg-primary/5 p-6 md:p-8 rounded-2xl border border-primary/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
  <div>
  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Still need help?</h3>
- <p className="text-slate-600 dark:text-slate-300">Check out our community forums or submit a detailed ticket for complex issues.</p>
+ <p className="text-slate-600 dark:text-white">Check out our community forums or submit a detailed ticket for complex issues.</p>
  </div>
  <Link to="/contact" className="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-colors flex items-center gap-2 whitespace-nowrap">
  Contact Us <ExternalLink className="w-5 h-5" />
@@ -173,13 +173,13 @@ const StaticPages = ({ pageId }) => {
  >
  <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8">{data.title}</h1>
  
- <div className="prose prose-lg text-slate-600 dark:text-slate-300 max-w-none">
+ <div className="prose prose-lg text-slate-600 dark:text-white max-w-none">
  <p className={`lead text-xl ${data.body ? 'mb-8 border-b border-slate-200 dark:border-slate-700 pb-8' : 'mb-6'}`}>
  {data.content}
  </p>
  
  {data.body && (
- <div className="mt-8 text-slate-700 dark:text-slate-200">
+ <div className="mt-8 text-slate-700 dark:text-white">
  {data.body}
  </div>
  )}

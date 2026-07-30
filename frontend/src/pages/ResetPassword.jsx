@@ -42,7 +42,7 @@ const ResetPassword = () => {
             <Lock className="w-8 h-8 text-red-500" />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Invalid Reset Link</h2>
-          <p className="text-slate-500 dark:text-slate-200 mb-6">This password reset link is invalid or has expired.</p>
+          <p className="text-slate-500 dark:text-white mb-6">This password reset link is invalid or has expired.</p>
           <Link to="/forgot-password" className="inline-flex justify-center items-center py-2.5 px-6 rounded-xl text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 transition-colors w-full">
             Request New Link
           </Link>
@@ -80,7 +80,7 @@ const ResetPassword = () => {
                 <KeyRound className="h-8 w-8 text-primary" />
               </motion.div>
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Set New Password</h2>
-              <p className="text-slate-500 dark:text-slate-200 mt-2">Create a new password for {email}</p>
+              <p className="text-slate-500 dark:text-white mt-2">Create a new password for {email}</p>
             </div>
 
             {status === 'success' ? (
@@ -99,7 +99,7 @@ const ResetPassword = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">New Password</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">New Password</label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
                       <Lock className="h-5 w-5" />
@@ -123,7 +123,7 @@ const ResetPassword = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Confirm New Password</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">Confirm New Password</label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
                       <Lock className="h-5 w-5" />

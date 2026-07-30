@@ -64,7 +64,7 @@ const TechStackModal = ({ isOpen, onClose, techId }) => {
  <div className="glassmorphism dark:glass-dark bg-white/90 dark:bg-transparent transition-colors p-8 rounded-3xl shadow-2xl border border-white/50 dark:border-white/10 relative">
  <button 
  onClick={onClose}
- className="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 dark:text-slate-300 transition-colors"
+ className="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 dark:text-white transition-colors"
  >
  <X className="w-5 h-5" />
  </button>
@@ -76,7 +76,7 @@ const TechStackModal = ({ isOpen, onClose, techId }) => {
  <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
  {tech.name}
  </h3>
- <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+ <p className="text-slate-600 dark:text-white text-lg leading-relaxed">
  {tech.description}
  </p>
  

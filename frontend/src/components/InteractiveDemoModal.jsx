@@ -63,7 +63,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-200 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 text-slate-500 hover:text-slate-700 dark:text-white dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -85,7 +85,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
                     {stat.icon}
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-slate-500 dark:text-slate-200">{stat.label}</p>
+                    <p className="text-sm font-medium text-slate-500 dark:text-white">{stat.label}</p>
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</h3>
                     <p className="text-xs font-medium text-green-600 dark:text-green-400 mt-1">{stat.change} {t('demo.vs_last_month')}</p>
                   </div>
@@ -101,7 +101,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('demo.revenue_overview')}</h3>
                   <div className="flex gap-2">
                     {['1W', '1M', '3M', '1Y'].map(t => (
-                      <button key={t} className="px-3 py-1 text-xs font-medium rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors">
+                      <button key={t} className="px-3 py-1 text-xs font-medium rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-white transition-colors">
                         {t}
                       </button>
                     ))}
@@ -134,7 +134,7 @@ const InteractiveDemoModal = ({ isOpen, onClose }) => {
                     <div key={i} className="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-100 dark:hover:border-slate-700">
                       <div>
                         <p className="text-sm font-bold text-slate-900 dark:text-white">{order.item}</p>
-                        <p className="text-xs text-slate-500 dark:text-slate-200">{order.id} • {order.time}</p>
+                        <p className="text-xs text-slate-500 dark:text-white">{order.id} • {order.time}</p>
                       </div>
                       <span className="text-sm font-bold text-primary">{order.price}</span>
                     </div>

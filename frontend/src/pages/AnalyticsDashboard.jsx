@@ -11,7 +11,7 @@ const AnalyticsDashboard = () => {
  <div className="max-w-7xl mx-auto">
  <div className="glassmorphism dark:glass-dark p-8">
  <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-4">AnalyticsDashboard</h1>
- <p className="text-slate-600 dark:text-slate-300">This is a placeholder page for AnalyticsDashboard. Business logic will be implemented here.</p>
+ <p className="text-slate-600 dark:text-white">This is a placeholder page for AnalyticsDashboard. Business logic will be implemented here.</p>
  </div>
  </div>
  </motion.div>

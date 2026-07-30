@@ -240,7 +240,7 @@ const Register = () => {
                     <Mail className="w-10 h-10 text-green-600 dark:text-green-400" />
                   </div>
                   <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Check your email</h2>
-                  <p className="text-slate-600 dark:text-slate-300 mb-8">
+                  <p className="text-slate-600 dark:text-white mb-8">
                     A verification email has been sent to <br/><span className="font-semibold text-slate-800 dark:text-slate-100">{formData.email}</span>. <br/>Please verify your account to continue.
                   </p>
                   <Link to="/login" className="inline-flex justify-center items-center py-3 px-6 rounded-xl shadow-lg shadow-primary/20 text-sm font-medium text-white bg-gradient-to-r from-primary to-emerald-400 hover:from-primary-dark hover:to-primary transition-all">
@@ -256,7 +256,7 @@ const Register = () => {
                 >
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">{t('auth.create_account')}</h2>
-                    <p className="text-slate-500 dark:text-slate-200 mt-2">Join RestaurantBrain in just a few steps</p>
+                    <p className="text-slate-500 dark:text-white mt-2">Join RestaurantBrain in just a few steps</p>
                   </div>
 
                   {/* Progress Bar */}
@@ -268,7 +268,7 @@ const Register = () => {
                         className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"
                       ></motion.div>
                     </div>
-                    <div className="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-200 px-1">
+                    <div className="flex justify-between text-xs font-medium text-slate-500 dark:text-white px-1">
                       <span className={step >= 1 ? 'text-primary' : ''}>Details</span>
                       <span className={step >= 2 ? 'text-primary' : ''}>Password</span>
                       <span className={step >= 3 ? 'text-primary' : ''}>Role</span>
@@ -279,7 +279,7 @@ const Register = () => {
                     <div className="mb-6">
                       <div className="flex justify-center w-full">
                         {googleLoading ? (
-                          <div className="w-full flex justify-center items-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur text-sm font-medium text-slate-700 dark:text-slate-200">
+                          <div className="w-full flex justify-center items-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur text-sm font-medium text-slate-700 dark:text-white">
                             <Loader2 className="animate-spin h-5 w-5 mr-2" />
                             Authenticating...
                           </div>
@@ -301,7 +301,7 @@ const Register = () => {
                           <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
                         </div>
                         <div className="relative flex justify-center text-sm">
-                          <span className="px-4 bg-transparent text-slate-500 dark:text-slate-200 relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
+                          <span className="px-4 bg-transparent text-slate-500 dark:text-white relative z-10 before:absolute before:inset-0 before:bg-white dark:before:bg-slate-900 before:-z-10 before:blur-sm">{t('auth.or_continue')}</span>
                         </div>
                       </div>
                     </div>
@@ -320,7 +320,7 @@ const Register = () => {
                           className="space-y-5"
                         >
                           <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.full_name')} *</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-white mb-1">{t('auth.full_name')} *</label>
                             <div className="relative group">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
                                 <User className="h-5 w-5" />
@@ -337,7 +337,7 @@ const Register = () => {
                           </div>
 
                           <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.email')} *</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-white mb-1">{t('auth.email')} *</label>
                             <div className="relative group">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
                                 <Mail className="h-5 w-5" />
@@ -354,7 +354,7 @@ const Register = () => {
                           </div>
 
                           <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Phone Number</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-white mb-1">Phone Number</label>
                             <div className="relative group">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
                                 <Phone className="h-5 w-5" />
@@ -382,7 +382,7 @@ const Register = () => {
                           className="space-y-5"
                         >
                           <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.password')} *</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-white mb-1">{t('auth.password')} *</label>
                             <div className="relative group">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
                                 <Lock className="h-5 w-5" />
@@ -407,8 +407,8 @@ const Register = () => {
                             {/* Password Strength Meter */}
                             <div className="mt-3">
                               <div className="flex justify-between text-xs mb-1">
-                                <span className="text-slate-500 dark:text-slate-200">Password strength</span>
-                                <span className="font-medium text-slate-700 dark:text-slate-300">{strength}%</span>
+                                <span className="text-slate-500 dark:text-white">Password strength</span>
+                                <span className="font-medium text-slate-700 dark:text-white">{strength}%</span>
                               </div>
                               <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
                                 <motion.div 
@@ -418,7 +418,7 @@ const Register = () => {
                                   transition={{ duration: 0.3 }}
                                 />
                               </div>
-                              <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-200">
+                              <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-white">
                                 <div className={`flex items-center gap-1 ${formData.password.length >= 8 ? 'text-green-600 dark:text-green-400' : ''}`}>
                                   <CheckCircle className="w-3 h-3" /> Min 8 chars
                                 </div>
@@ -439,7 +439,7 @@ const Register = () => {
                           </div>
 
                           <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t('auth.confirm_password')} *</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-white mb-1">{t('auth.confirm_password')} *</label>
                             <div className="relative group">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary">
                                 <Lock className="h-5 w-5" />
@@ -477,7 +477,7 @@ const Register = () => {
                           transition={{ duration: 0.3 }}
                           className="space-y-4"
                         >
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Select Your Role</label>
+                          <label className="block text-sm font-medium text-slate-700 dark:text-white mb-2">Select Your Role</label>
                           <div className="space-y-3">
                             {roles.map((role) => (
                               <div 
@@ -493,8 +493,8 @@ const Register = () => {
                                   {role.icon}
                                 </div>
                                 <div>
-                                  <h4 className={`font-semibold ${formData.role === role.id ? 'text-primary' : 'text-slate-800 dark:text-slate-200'}`}>{role.title}</h4>
-                                  <p className="text-sm text-slate-500 dark:text-slate-200 mt-1">{role.desc}</p>
+                                  <h4 className={`font-semibold ${formData.role === role.id ? 'text-primary' : 'text-slate-800 dark:text-white'}`}>{role.title}</h4>
+                                  <p className="text-sm text-slate-500 dark:text-white mt-1">{role.desc}</p>
                                 </div>
                               </div>
                             ))}
@@ -510,7 +510,7 @@ const Register = () => {
                       <button
                         type="button"
                         onClick={prevStep}
-                        className="flex items-center text-sm font-medium text-slate-600 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+                        className="flex items-center text-sm font-medium text-slate-600 dark:text-white hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
                       >
                         <ArrowLeft className="w-4 h-4 mr-1" />
                         Back
@@ -545,7 +545,7 @@ const Register = () => {
                     )}
                   </div>
                   
-                  <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-200">
+                  <div className="mt-8 text-center text-sm text-slate-600 dark:text-white">
                     {t('auth.already_have_account')}{' '}
                     <Link to="/login" className="font-medium text-primary hover:text-primary-dark transition-colors">
                       {t('auth.sign_in_link')}
