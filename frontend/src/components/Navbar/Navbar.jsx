@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Utensils, LogOut, User, Bell, ChevronDown, Bot, Globe, Menu, X } from 'lucide-react';
+import { Utensils, LogOut, User, Bell, ChevronDown, Bot, Globe, Menu, X, Settings } from 'lucide-react';
 import { AuthContext } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -278,7 +278,7 @@ const Navbar = () => {
                             onClick={() => setProfileOpen(false)}
                             className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
                           >
-                            <span className="w-4 h-4 flex items-center justify-center font-bold">⚙️</span>
+                            <Settings className="w-4 h-4" />
                             Settings
                           </Link>
                           <div className="h-px bg-slate-200 dark:bg-slate-700 my-1"></div>
@@ -373,6 +373,9 @@ const Navbar = () => {
                 <div className="flex flex-col space-y-2 pt-2">
                   <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 text-sm text-slate-700 dark:text-slate-200 flex items-center gap-3">
                     <User className="w-5 h-5" /> Profile
+                  </Link>
+                  <Link to="/settings" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 text-sm text-slate-700 dark:text-slate-200 flex items-center gap-3">
+                    <Settings className="w-5 h-5" /> Settings
                   </Link>
                   <button onClick={handleLogout} className="px-4 py-3 text-sm text-error flex items-center gap-3 w-full text-left font-medium">
                     <LogOut className="w-5 h-5" /> {t('nav.sign_out')}
