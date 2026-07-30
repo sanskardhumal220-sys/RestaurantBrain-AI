@@ -16,13 +16,13 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Construct mailto link
-    const mailtoLink = `mailto:sanskardhumal220@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+    // Construct Gmail compose URL
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=sanskardhumal220@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
     
-    // Open default email client
-    window.location.href = mailtoLink;
+    // Open Gmail in a new tab
+    window.open(gmailUrl, '_blank');
 
     setTimeout(() => {
       setLoading(false);
