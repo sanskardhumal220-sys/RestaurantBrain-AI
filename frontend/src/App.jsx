@@ -15,6 +15,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 import CustomerDashboard from './pages/CustomerDashboard';
 import RestaurantDashboard from './pages/RestaurantDashboard';
 import StaffDashboard from './pages/StaffDashboard';
@@ -85,6 +86,13 @@ function App() {
                 <Route path="/profile" element={
                   <ProtectedRoute allowedRoles={['Customer', 'Restaurant Owner', 'Staff']}>
                     <Profile />
+                  </ProtectedRoute>
+                } />
+
+                {/* Settings */}
+                <Route path="/settings" element={
+                  <ProtectedRoute allowedRoles={['Customer', 'Restaurant Owner', 'Staff']}>
+                    <Settings />
                   </ProtectedRoute>
                 } />
 
