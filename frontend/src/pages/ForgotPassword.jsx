@@ -24,7 +24,7 @@ const ForgotPassword = () => {
       
       if (response.data.reset_link) {
         setDemoLink(response.data.reset_link);
-        toast.success('Demo Mode: Reset link generated!');
+        toast.success('🟡 Password Reset (Beta): Reset link generated!');
       } else {
         toast.success('Password reset link sent to your email!');
       }
@@ -99,7 +99,7 @@ const ForgotPassword = () => {
                     <div className="mt-4 p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl text-left">
                       <div className="flex items-center text-orange-600 dark:text-orange-400 font-medium mb-2">
                         <ShieldAlert className="w-5 h-5 mr-2" />
-                        Demo Mode Active
+                        🟡 Password Reset (Beta)
                       </div>
                       <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
                         Because you haven't configured a real email server in your .env file, the email was not actually sent. Click this link to continue testing:

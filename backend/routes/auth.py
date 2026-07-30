@@ -270,7 +270,16 @@ def forgot_password():
         s = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
         token = s.dumps(email, salt='email-reset-salt')
         
-        frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:5173')
+        # Dynamically determine frontend URL
+        frontend_url = os.environ.get('FRONTEND_URL')
+        if not frontend_url:
+            frontend_url = request.headers.get('Origin')
+        if not frontend_url:
+            frontend_url = request.host_url.rstrip('/')
+            
+        # Fallback for local development if it somehow picks up the backend port
+        if frontend_url.endswith(':5000'):
+            frontend_url = 'http://localhost:5173'
         reset_link = f"{frontend_url}/reset-password?token={token}&email={email}"
         
         print("\n" + "="*50)
